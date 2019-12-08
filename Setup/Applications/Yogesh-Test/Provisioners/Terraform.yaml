@@ -1,0 +1,13 @@
+harnessApiVersion: '1.0'
+type: TERRAFORM
+name: Terraform
+path: ./s3
+sourceRepoBranch: master
+sourceRepoSettingName: yogesh_terraform
+variables:
+- name: access_key
+  valueType: TEXT
+- name: owner
+  valueType: TEXT
+- name: secret_key
+  valueType: TEXT

@@ -1,0 +1,8 @@
+harnessApiVersion: '1.0'
+type: SERVICE
+artifactType: DOCKER
+configVariables:
+- name: abc
+  value: abc
+  valueType: TEXT
+deploymentType: KUBERNETES

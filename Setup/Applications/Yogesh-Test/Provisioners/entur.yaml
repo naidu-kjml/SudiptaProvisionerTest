@@ -1,0 +1,18 @@
+harnessApiVersion: '1.0'
+type: TERRAFORM
+backendConfigs:
+- name: 'credentials '
+  valueType: TEXT
+name: entur
+path: .
+sourceRepoBranch: master
+sourceRepoSettingName: yogesh_terraform
+variables:
+- name: access_key
+  valueType: TEXT
+- name: bucket_name
+  valueType: TEXT
+- name: credentials
+  valueType: TEXT
+- name: gcp_project
+  valueType: TEXT
