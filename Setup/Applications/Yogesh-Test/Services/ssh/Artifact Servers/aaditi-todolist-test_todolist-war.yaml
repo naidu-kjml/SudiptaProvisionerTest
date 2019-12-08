@@ -1,6 +1,0 @@
-harnessApiVersion: '1.0'
-type: AMAZON_S3
-artifactPaths:
-- todolist.war
-bucketName: aaditi-todolist-test
-serverName: aws-play-ground-satyam

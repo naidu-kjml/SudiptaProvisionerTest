@@ -1,8 +1,0 @@
-harnessApiVersion: '1.0'
-type: SERVICE
-artifactType: AMI
-configVariables:
-- name: aaa
-  value: hashicorpvault://000-5-vault-casadf/harness/SECRET_TEXT/vaulttestone#value
-  valueType: ENCRYPTED_TEXT
-deploymentType: AMI
