@@ -1,0 +1,10 @@
+harnessApiVersion: '1.0'
+type: PHYSICAL_DATA_CENTER_SSH
+computeProviderName: PHYSICAL_DATA_CENTER
+computeProviderType: PHYSICAL_DATA_CENTER
+connection: DEV_TEST_CONNECTOR
+deploymentType: SSH
+hostNames:
+- axhla
+infraMappingType: PHYSICAL_DATA_CENTER_SSH
+serviceName: s
