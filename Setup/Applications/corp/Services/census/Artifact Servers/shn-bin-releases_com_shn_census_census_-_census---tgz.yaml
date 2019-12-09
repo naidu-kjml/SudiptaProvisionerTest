@@ -1,7 +1,0 @@
-harnessApiVersion: '1.0'
-type: ARTIFACTORY
-artifactPattern: com/shn/census/census/*/census-*.tgz
-metadataOnly: true
-repositoryName: shn-bin-releases
-repositoryType: any
-serverName: corpshared artifactory
