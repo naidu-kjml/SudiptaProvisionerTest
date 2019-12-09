@@ -1,5 +1,0 @@
-harnessApiVersion: '1.0'
-type: ENVIRONMENT
-configMapYamlByServiceTemplateName: {}
-description: Cloned from environment a
-environmentType: NON_PROD
