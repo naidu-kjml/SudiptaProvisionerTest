@@ -1,0 +1,21 @@
+harnessApiVersion: '1.0'
+type: OTHER
+commandUnitType: COMMAND
+commandUnits:
+- command: |-
+    echo not implemented
+    exit 1
+  commandUnitType: EXEC
+  deploymentType: SSH
+  name: Force Stop
+  scriptType: BASH
+  workingDirectory: ${WINGS_RUNTIME_PATH}
+- command: |-
+    echo not implemented
+    exit 1
+  commandUnitType: EXEC
+  deploymentType: SSH
+  name: Force Stop
+  scriptType: BASH
+  workingDirectory: ${WINGS_RUNTIME_PATH}
+targetToAllEnv: true

@@ -1,0 +1,7 @@
+harnessApiVersion: '1.0'
+type: TRIGGER
+executionName: qaautoregression-Autodeploy -- SI_TP
+executionType: Pipeline
+triggerCondition:
+- type: PIPELINE_COMPLETION
+  pipelineName: qaautoregression-Autodeploy -- Combined First 7
