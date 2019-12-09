@@ -1,8 +1,0 @@
-harnessApiVersion: '1.0'
-type: SERVICE
-artifactType: TAR
-configVariables:
-- name: AGENT_IP
-  value: <UNKNOWN>
-  valueType: TEXT
-description: service-workflow Service re-creation
