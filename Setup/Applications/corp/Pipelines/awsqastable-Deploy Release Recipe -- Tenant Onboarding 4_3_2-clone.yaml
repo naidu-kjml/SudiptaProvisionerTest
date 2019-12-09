@@ -1,0 +1,38 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+description: deploys Tenant Onboarding per 4.3.2 receipe
+pipelineStages:
+- type: ENV_STATE
+  name: tenant-onboarding
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tenant-onboarding
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tenant-onboarding
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tenant-onboarding
+- type: ENV_STATE
+  name: shn-self-service
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shn-self-service
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: shn-self-service
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-shn-self-service

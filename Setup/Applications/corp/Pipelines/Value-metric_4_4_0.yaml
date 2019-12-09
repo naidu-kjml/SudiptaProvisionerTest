@@ -1,0 +1,38 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+description: 'value Metric 4.4.0 deployment '
+pipelineStages:
+- type: ENV_STATE
+  name: vm-prometheus
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: vm-prometheus
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-vm-prometheus
+- type: ENV_STATE
+  name: vm-dataservice
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: vm-dataservice
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-vm-dataservice

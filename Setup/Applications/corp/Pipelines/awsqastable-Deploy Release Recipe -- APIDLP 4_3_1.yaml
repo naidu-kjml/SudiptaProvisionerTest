@@ -1,0 +1,157 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+description: deploys APIDLP per 4.3.1 recipe
+pipelineStages:
+- type: ENV_STATE
+  name: shndirectory-service
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shndirectory-service
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-awsqastable
+  - entityType: SERVICE
+    name: Service
+    value: shndirectory-service
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: awsqastable-shndirectory-service
+- type: ENV_STATE
+  name: shndirectory-ingestion
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shndirectory-ingestion
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-awsqastable
+  - entityType: SERVICE
+    name: Service
+    value: shndirectory-ingestion
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: awsqastable-shndirectory-ingestion
+- type: ENV_STATE
+  name: zeus-server 25 percent at a time
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: zeus-server
+  workflowName: Deploy Rolling 25 percent at a time
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-awsqastable
+  - entityType: SERVICE
+    name: Service
+    value: zeus-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: awsqastable-zeus-server
+- type: ENV_STATE
+  name: shnwebhooks
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: parallel
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-awsqastable
+  - entityType: SERVICE
+    name: Service
+    value: shnwebhooks
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: awsqastable-shnwebhooks
+- type: ENV_STATE
+  name: policy-management
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: parallel
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-awsqastable
+  - entityType: SERVICE
+    name: Service
+    value: policy-management
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: awsqastable-policy-management
+- type: ENV_STATE
+  name: dlp-incidents
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: parallel
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-awsqastable
+  - entityType: SERVICE
+    name: Service
+    value: dlp-incidents
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: awsqastable-dlp-incidents
+- type: ENV_STATE
+  name: shn-drmintegration 25 percent at a time
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: parallel
+  workflowName: Deploy Rolling 25 percent at a time
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-awsqastable
+  - entityType: SERVICE
+    name: Service
+    value: shn-drmintegration
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: awsqastable-shn-drmintegration
+- type: ENV_STATE
+  name: auton-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: auton-server
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-awsqastable
+  - entityType: SERVICE
+    name: Service
+    value: auton-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: awsqastable-auton-server
+- type: ENV_STATE
+  name: auton-ui
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: auton-ui
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-awsqastable
+  - entityType: SERVICE
+    name: Service
+    value: auton-ui
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: awsqastable-auton-ui
