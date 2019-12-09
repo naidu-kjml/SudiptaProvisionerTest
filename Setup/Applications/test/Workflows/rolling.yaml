@@ -1,6 +1,6 @@
 harnessApiVersion: '1.0'
 type: ROLLING
-envName: a-renamed
+envName: a-renamed-again
 failureStrategies:
 - executionScope: WORKFLOW
   failureTypes:
