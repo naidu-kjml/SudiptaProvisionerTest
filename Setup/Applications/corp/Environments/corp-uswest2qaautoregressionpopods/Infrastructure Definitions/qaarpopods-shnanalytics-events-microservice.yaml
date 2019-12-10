@@ -1,0 +1,21 @@
+harnessApiVersion: '1.0'
+type: INFRA_DEFINITION
+cloudProviderType: AWS
+deploymentType: SSH
+infrastructure:
+- type: AWS_SSH
+  awsInstanceFilter:
+    tags:
+    - key: service.shnanalytics-events-microservice
+      value: active
+    vpcIds:
+    - vpc-0d96d7a3cae54ca29
+  cloudProviderName: shncasb
+  desiredCapacity: 0
+  hostConnectionAttrsName: shn-harness
+  region: us-west-2
+  setDesiredCapacity: false
+  useAutoScalingGroup: false
+  usePublicDns: false
+scopedServices:
+- shnanalytics-events-microservice
