@@ -1,0 +1,21 @@
+harnessApiVersion: '1.0'
+type: INFRA_DEFINITION
+cloudProviderType: AWS
+deploymentType: SSH
+infrastructure:
+- type: AWS_SSH
+  awsInstanceFilter:
+    tags:
+    - key: service.shnwebhooks
+      value: active
+    vpcIds:
+    - vpc-00f7dfce9dc4cea75
+  cloudProviderName: shncasb
+  desiredCapacity: 0
+  hostConnectionAttrsName: shn-harness
+  region: us-west-2
+  setDesiredCapacity: false
+  useAutoScalingGroup: false
+  usePublicDns: false
+scopedServices:
+- shnwebhooks
