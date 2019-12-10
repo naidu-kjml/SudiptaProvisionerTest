@@ -1,0 +1,327 @@
+harnessApiVersion: '1.0'
+type: CANARY
+concurrencyStrategy: INFRA
+description: Canaray
+envName: corp-qat
+failureStrategies:
+- executionScope: WORKFLOW
+  failureTypes:
+  - CONNECTIVITY
+  - AUTHENTICATION
+  - VERIFICATION_FAILURE
+  - APPLICATION_ERROR
+  repairActionCode: END_EXECUTION
+  retryCount: 0
+notificationRules:
+- conditions:
+  - FAILED
+  executionScope: WORKFLOW
+  notificationGroupAsExpression: false
+  userGroupAsExpression: false
+- conditions:
+  - SUCCESS
+  - FAILED
+  - PAUSED
+  executionScope: WORKFLOW
+  notificationGroupAsExpression: false
+  userGroupAsExpression: false
+phases:
+- type: SSH
+  computeProviderName: shncasb
+  daemonSet: false
+  infraDefinitionName: qat-dp-data-bridge
+  name: Deploy 10%
+  phaseSteps:
+  - type: INFRASTRUCTURE_NODE
+    name: Prepare Infra
+    steps:
+    - type: AWS_NODE_SELECT
+      name: Select Nodes
+      properties:
+        excludeSelectedHostsFromFuturePhases: true
+        instanceCount: 10
+        instanceUnitType: PERCENTAGE
+        specificHosts: false
+    stepsInParallel: false
+  - type: DISABLE_SERVICE
+    name: Disable Service
+    steps:
+    - type: COMMAND
+      name: Stop
+      properties:
+        commandName: Stop
+    - type: COMMAND
+      name: Unconfigure_2
+      properties:
+        commandName: Unconfigure
+    - type: COMMAND
+      name: Uninstall_3
+      properties:
+        commandName: Uninstall
+    stepsInParallel: false
+  - type: DEPLOY_SERVICE
+    name: Deploy Service
+    steps:
+    - type: COMMAND
+      name: Install
+      properties:
+        commandName: Install
+    - type: COMMAND
+      name: Configure_2
+      properties:
+        commandName: Configure
+    - type: COMMAND
+      name: Start_3
+      properties:
+        commandName: Start
+    stepsInParallel: false
+  - type: ENABLE_SERVICE
+    name: Enable Service
+    stepsInParallel: false
+  - type: VERIFY_SERVICE
+    name: Verify Service
+    stepsInParallel: false
+  - type: WRAP_UP
+    name: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  serviceName: dp-data-bridge
+  statefulSet: false
+  templateExpressions:
+  - expression: ${Service}
+    fieldName: serviceId
+    metadata:
+    - name: artifactType
+      value: TAR
+    - name: relatedField
+      value: ${InfraDefinition_SSH}
+    - name: entityType
+      value: SERVICE
+  - expression: ${InfraDefinition_SSH}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: artifactType
+      value: TAR
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
+- type: SSH
+  computeProviderName: shncasb
+  daemonSet: false
+  infraDefinitionName: qat-dp-data-bridge
+  name: Deploy 100%
+  phaseSteps:
+  - type: INFRASTRUCTURE_NODE
+    name: Prepare Infra
+    steps:
+    - type: AWS_NODE_SELECT
+      name: Select Nodes
+      properties:
+        excludeSelectedHostsFromFuturePhases: true
+        instanceCount: 100
+        instanceUnitType: PERCENTAGE
+        specificHosts: false
+    stepsInParallel: false
+  - type: DISABLE_SERVICE
+    name: Disable Service
+    steps:
+    - type: COMMAND
+      name: Stop
+      properties:
+        commandName: Stop
+    - type: COMMAND
+      name: Unconfigure_2
+      properties:
+        commandName: Unconfigure
+    - type: COMMAND
+      name: Uninstall_3
+      properties:
+        commandName: Uninstall
+    stepsInParallel: false
+  - type: DEPLOY_SERVICE
+    name: Deploy Service
+    steps:
+    - type: COMMAND
+      name: Install_2
+      properties:
+        commandName: Install
+    - type: COMMAND
+      name: Configure
+      properties:
+        commandName: Configure
+    - type: COMMAND
+      name: Start_3
+      properties:
+        commandName: Start
+    stepsInParallel: false
+  - type: ENABLE_SERVICE
+    name: Enable Service
+    stepsInParallel: false
+  - type: VERIFY_SERVICE
+    name: Verify Service
+    stepsInParallel: false
+  - type: WRAP_UP
+    name: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  serviceName: dp-data-bridge
+  statefulSet: false
+  templateExpressions:
+  - expression: ${Service}
+    fieldName: serviceId
+    metadata:
+    - name: artifactType
+      value: TAR
+    - name: relatedField
+      value: ${InfraDefinition_SSH}
+    - name: entityType
+      value: SERVICE
+  - expression: ${InfraDefinition_SSH}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: artifactType
+      value: TAR
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
+preDeploymentSteps:
+- type: ARTIFACT_CHECK
+  name: Artifact Check
+rollbackPhases:
+- type: SSH
+  computeProviderName: shncasb
+  daemonSet: false
+  infraDefinitionName: qat-dp-data-bridge
+  name: Rollback Deploy 10%
+  phaseNameForRollback: Deploy 10%
+  phaseSteps:
+  - type: DISABLE_SERVICE
+    name: Disable Service
+    phaseStepNameForRollback: Enable Service
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: STOP_SERVICE
+    name: Stop Service
+    phaseStepNameForRollback: Deploy Service
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: DEPLOY_SERVICE
+    name: Deploy Service
+    phaseStepNameForRollback: Deploy Service
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: ENABLE_SERVICE
+    name: Enable Service
+    phaseStepNameForRollback: Disable Service
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: VERIFY_SERVICE
+    name: Verify Service
+    phaseStepNameForRollback: Deploy Service
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: WRAP_UP
+    name: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  serviceName: dp-data-bridge
+  statefulSet: false
+  templateExpressions:
+  - expression: ${Service}
+    fieldName: serviceId
+    metadata:
+    - name: artifactType
+      value: TAR
+    - name: relatedField
+      value: ${InfraDefinition_SSH}
+    - name: entityType
+      value: SERVICE
+  - expression: ${InfraDefinition_SSH}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: artifactType
+      value: TAR
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
+- type: SSH
+  computeProviderName: shncasb
+  daemonSet: false
+  infraDefinitionName: qat-dp-data-bridge
+  name: Rollback Deploy 100%
+  phaseNameForRollback: Deploy 100%
+  phaseSteps:
+  - type: DISABLE_SERVICE
+    name: Disable Service
+    phaseStepNameForRollback: Enable Service
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: STOP_SERVICE
+    name: Stop Service
+    phaseStepNameForRollback: Deploy Service
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: DEPLOY_SERVICE
+    name: Deploy Service
+    phaseStepNameForRollback: Deploy Service
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: ENABLE_SERVICE
+    name: Enable Service
+    phaseStepNameForRollback: Disable Service
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: VERIFY_SERVICE
+    name: Verify Service
+    phaseStepNameForRollback: Deploy Service
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: WRAP_UP
+    name: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  serviceName: dp-data-bridge
+  statefulSet: false
+  templateExpressions:
+  - expression: ${Service}
+    fieldName: serviceId
+    metadata:
+    - name: artifactType
+      value: TAR
+    - name: relatedField
+      value: ${InfraDefinition_SSH}
+    - name: entityType
+      value: SERVICE
+  - expression: ${InfraDefinition_SSH}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: artifactType
+      value: TAR
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
+templateExpressions:
+- expression: ${Environment}
+  fieldName: envId
+  metadata:
+  - name: artifactType
+    value: TAR
+  - name: relatedField
+  - name: entityType
+    value: ENVIRONMENT
+templatized: true
+userVariables:
+- type: ENTITY
+  description: Variable for Environment entity
+  fixed: false
+  mandatory: true
+  name: Environment
+- type: ENTITY
+  description: Variable for Service entity in Rollback Deploy 100%
+  fixed: false
+  mandatory: true
+  name: Service
+- type: ENTITY
+  fixed: false
+  mandatory: true
+  name: InfraDefinition_SSH
