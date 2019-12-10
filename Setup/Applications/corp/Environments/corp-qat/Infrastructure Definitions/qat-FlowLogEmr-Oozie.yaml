@@ -6,8 +6,8 @@ infrastructure:
 - type: AWS_SSH
   awsInstanceFilter:
     tags:
-    - key: service.ip-emr-flow-log-kafka-consumer
-      value: active
+    - key: cluster.cdh-oozie
+      value: flowLogEMR
     vpcIds:
     - vpc-0621b33b5ea028668
   cloudProviderName: shncasb
