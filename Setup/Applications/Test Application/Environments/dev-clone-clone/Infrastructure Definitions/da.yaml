@@ -1,0 +1,10 @@
+harnessApiVersion: '1.0'
+type: INFRA_DEFINITION
+cloudProviderType: PHYSICAL_DATA_CENTER
+deploymentType: WINRM
+infrastructure:
+- type: PHYSICAL_DATA_CENTER_WINRM
+  cloudProviderName: PHYSICAL_DATA_CENTER
+  hostNames:
+  - daad
+  winRmConnectionAttributesName: Test WinRM Connection
