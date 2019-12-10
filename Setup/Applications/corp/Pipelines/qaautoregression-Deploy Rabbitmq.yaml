@@ -1,0 +1,20 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+pipelineStages:
+- type: ENV_STATE
+  name: Force Stop RabbitMQ
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Force Stop RabbitMQ
+  workflowName: Force Stop
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: rabbitmq_sw
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-rabbitmq_sw

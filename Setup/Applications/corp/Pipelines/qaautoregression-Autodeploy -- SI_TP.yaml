@@ -1,0 +1,538 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+description: deploy TP pipeline per 4.4.0 recipe for qaautoregression
+pipelineStages:
+- type: ENV_STATE
+  name: Collect Builds
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: qaautoregression-Collect Builds -- TP
+- type: ENV_STATE
+  name: Stop tp-realtime
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Stop tp-realtime
+  workflowName: Stop Service -ignore-errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-realtime
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-realtime
+- type: ENV_STATE
+  name: tp-dataservice
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-dataservice
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-dataservice
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-dataservice
+- type: ENV_STATE
+  name: iaas-data-service
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: iaas-data-service
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: iaas-data-service
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-iaas-data-service
+- type: ENV_STATE
+  name: neo-app
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: neo-app
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: neo-app
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-neo-app
+- type: ENV_STATE
+  name: si-serv
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: si-serv
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: si-serv
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-si-serv
+- type: ENV_STATE
+  name: merlin
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: merlin
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: merlin
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-merlin
+- type: ENV_STATE
+  name: merlin-ui
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: merlin-ui
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: merlin-ui
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-merlin-ui
+- type: ENV_STATE
+  name: tp-stream-preprocessor
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-stream-preprocessor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-stream-preprocessor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-stream-preprocessor
+- type: ENV_STATE
+  name: tp-realtime
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-stream-preprocessor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-realtime
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-realtime
+- type: ENV_STATE
+  name: tp-activity-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-stream-preprocessor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-activity-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-activity-persistor
+- type: ENV_STATE
+  name: tp-anomaly-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-stream-preprocessor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-anomaly-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-anomaly-persistor
+- type: ENV_STATE
+  name: ' tp-batch-compaction'
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-batch-compaction
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-batch-compaction
+- type: ENV_STATE
+  name: tp-action-category-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-action-category-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-action-category-persistor
+- type: ENV_STATE
+  name: tp-activity-enrichment
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-activity-enrichment
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-activity-enrichment
+- type: ENV_STATE
+  name: tp-activity-kafka-publisher
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-activity-kafka-publisher
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-activity-kafka-publisher
+- type: ENV_STATE
+  name: tp-counter-aggregation
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-counter-aggregation
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-counter-aggregation
+- type: ENV_STATE
+  name: tp-counter-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-counter-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-counter-persistor
+- type: ENV_STATE
+  name: tp-anomaly-detection
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-anomaly-detection
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-anomaly-detection
+- type: ENV_STATE
+  name: tp-anomaly-kafka-publisher
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-anomaly-kafka-publisher
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-anomaly-kafka-publisher
+- type: ENV_STATE
+  name: tp-threat-detection
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-threat-detection
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-threat-detection
+- type: ENV_STATE
+  name: tp-threat-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-threat-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-threat-persistor
+- type: ENV_STATE
+  name: ip-resource-kafka-consumer
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: ip-resource-kafka-consumer
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-ip-resource-kafka-consumer
+- type: ENV_STATE
+  name: ip-resource-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: ip-resource-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-ip-resource-persistor
+- type: ENV_STATE
+  name: tp-threshold-jobs
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-threshold-jobs
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-threshold-jobs
+- type: ENV_STATE
+  name: tp-threshold-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-threshold-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-threshold-persistor
+- type: ENV_STATE
+  name: tp-crate-data-trimmer
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threshold-persistor
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-crate-data-trimmer
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-crate-data-trimmer
+- type: ENV_STATE
+  name: tp-batch-jobs
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-batch-jobs
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-batch-jobs
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-batch-jobs
+- type: ENV_STATE
+  name: Stop tp-batch-jobs
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Stop tp-batch-jobs
+  workflowName: Stop Service -ignore-errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-batch-jobs
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-batch-jobs
+- type: ENV_STATE
+  name: Start tp-batch-jobs
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Start tp-batch-jobs
+  workflowName: Start Service
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: tp-batch-jobs
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-tp-batch-jobs
+- type: ENV_STATE
+  name: Stop Druid Kafka Indexing
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Stop Druid Kafka Indexing
+  workflowName: Stop Service -ignore-errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: druid-kafka-indexing
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-druid-kafka-indexing
+- type: ENV_STATE
+  name: druid kafka indexing
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: druid kafka indexing
+  workflowName: Deploy Service -parallel- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: druid-kafka-indexing
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-druid-kafka-indexing
