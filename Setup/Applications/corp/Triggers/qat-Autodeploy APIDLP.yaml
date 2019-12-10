@@ -1,7 +1,0 @@
-harnessApiVersion: '1.0'
-type: TRIGGER
-executionName: qat-Autodeploy -- APIDLP
-executionType: Pipeline
-triggerCondition:
-- type: PIPELINE_COMPLETION
-  pipelineName: qat-Autodeploy -- Combined First 7
