@@ -1,0 +1,22 @@
+harnessApiVersion: '1.0'
+type: INFRA_DEFINITION
+cloudProviderType: AWS
+deploymentType: SSH
+infrastructure:
+- type: AWS_SSH
+  awsInstanceFilter:
+    tags:
+    - key: service.gap-analysis-server
+      value: active
+    vpcIds:
+    - vpc-0227394f11b8a50fb
+  cloudProviderName: shncasb
+  desiredCapacity: 0
+  hostConnectionAttrsName: shn-harness
+  hostNameConvention: ${host.ec2Instance.privateIpAddress}
+  region: us-west-2
+  setDesiredCapacity: false
+  useAutoScalingGroup: false
+  usePublicDns: false
+scopedServices:
+- gap-analysis-server
