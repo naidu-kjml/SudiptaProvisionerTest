@@ -1,0 +1,52 @@
+harnessApiVersion: '1.0'
+type: BUILD
+description: Collect the latest builds for first 7 services
+notificationRules:
+- conditions:
+  - FAILED
+  executionScope: WORKFLOW
+  notificationGroupAsExpression: false
+  userGroupAsExpression: false
+  userGroupIds:
+  - 0IDXOHmCRmOhH6iP-NwaVA
+phases:
+- daemonSet: false
+  name: Phase 1
+  phaseSteps:
+  - type: PREPARE_STEPS
+    name: Prepare Steps
+    stepsInParallel: false
+  - type: COLLECT_ARTIFACT
+    name: Collect Artifact
+    steps:
+    - type: ARTIFACT_COLLECTION
+      name: shnlogcollectorapp
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_shnlogcollectorapp-params---tgz
+        serviceName: shnlogcollectorapp
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: ec-datacopier-server
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_ec-datacopier-server-params---tgz
+        serviceName: ec-datacopier-server
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: maestro-updater
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_maestro-updater-params---tgz
+        serviceName: maestro-updater
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: maestro-spring-cloud-config-server
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_maestro-spring-cloud-config-server-params---tgz
+        serviceName: maestro-spring-cloud-config-server
+        timeoutMillis: 300000
+    stepsInParallel: true
+  - type: WRAP_UP
+    name: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  statefulSet: false
+templatized: false

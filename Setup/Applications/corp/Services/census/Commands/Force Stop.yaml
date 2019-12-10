@@ -1,0 +1,15 @@
+harnessApiVersion: '1.0'
+type: OTHER
+commandUnitType: COMMAND
+commandUnits:
+- command: |-
+    kill $(cat ../../census.pid)
+    kill -9 $(cat ../../census.pid)
+    ps aux | grep census | grep -v grep | awk '{print $2}' | xargs kill || true
+    ps aux | grep census | grep -v grep | awk '{print $2}' | xargs kill -9 || true
+  commandUnitType: EXEC
+  deploymentType: SSH
+  name: Force Stop
+  scriptType: BASH
+  workingDirectory: ${WINGS_RUNTIME_PATH}
+targetToAllEnv: true
