@@ -1,0 +1,10 @@
+harnessApiVersion: '1.0'
+type: INFRA_DEFINITION
+cloudProviderType: AZURE
+deploymentType: WINRM
+infrastructure:
+- type: AZURE_INFRA
+  cloudProviderName: Nats_Azure
+  resourceGroup: puneet-aks
+  subscriptionId: 12d2db62-5aa9-471d-84bb-faa489b3e319
+  winRmConnectionAttributesName: aws_windows

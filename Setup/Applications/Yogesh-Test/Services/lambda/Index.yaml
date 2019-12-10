@@ -1,0 +1,4 @@
+harnessApiVersion: '1.0'
+type: SERVICE
+artifactType: AWS_LAMBDA
+deploymentType: AWS_LAMBDA
