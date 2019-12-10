@@ -1,0 +1,259 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+description: deploys DLP per 4.2.0 receipe
+pipelineStages:
+- type: ENV_STATE
+  name: shndlpapi-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shndlpapi-server
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shndlpapi-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shndlpapi-server
+- type: ENV_STATE
+  name: watchtower-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: watchtower-server
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: watchtower-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-watchtower-server
+- type: ENV_STATE
+  name: shndirectory-service
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shndirectory-service
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shndirectory-service
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shndirectory-service
+- type: ENV_STATE
+  name: shn-drmintegration
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shn-drmintegration
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shn-drmintegration
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shn-drmintegration
+- type: ENV_STATE
+  name: zeus-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: zeus-server
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: zeus-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-zeus-server
+- type: ENV_STATE
+  name: shnwebhooks
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shnwebhooks
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shnwebhooks
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shnwebhooks
+- type: ENV_STATE
+  name: shn-sharepoint-dlp
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shn-sharepoint-dlp
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shn-sharepoint-dlp
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shn-sharepoint-dlp
+- type: ENV_STATE
+  name: shndirectory-ingestion
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shndirectory-ingestion
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shndirectory-ingestion
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shndirectory-ingestion
+- type: ENV_STATE
+  name: metis
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: metis
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: metis
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-metis
+- type: ENV_STATE
+  name: content-scanner
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: content-scanner
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: content-scanner
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-content-scanner
+- type: ENV_STATE
+  name: shn-haraka
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shn-haraka
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shnharaka
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shnharaka
+- type: ENV_STATE
+  name: policy-management
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: policy-management
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: policy-management
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-policy-management
+- type: ENV_STATE
+  name: dlp-incidents
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dlp-incidents
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dlp-incidents
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dlp-incidents
+- type: ENV_STATE
+  name: auton-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: auton-server
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: auton-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-auton-server
+- type: ENV_STATE
+  name: auton-ui
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: auton-ui
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: auton-ui
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-auton-ui
