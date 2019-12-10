@@ -1,0 +1,9 @@
+harnessApiVersion: '1.0'
+type: APPLICATION_DEFAULTS
+defaults:
+- name: BACKUP_PATH
+  value: $HOME/SHN/${service.name}/${serviceTemplate.name}/backup/${timestampId}
+- name: RUNTIME_PATH
+  value: $HOME/SHN/${service.name}/${serviceTemplate.name}/runtime
+- name: STAGING_PATH
+  value: $HOME/SHN/${service.name}/${serviceTemplate.name}/staging/${timestampId}

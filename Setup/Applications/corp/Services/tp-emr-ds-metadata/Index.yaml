@@ -1,0 +1,14 @@
+harnessApiVersion: '1.0'
+type: SERVICE
+artifactType: TAR
+configVariables:
+- name: FABRIC
+  value: <UNKNOWN>
+  valueType: TEXT
+- name: ARTIFACTORY_BASE_URL
+  value: <UNKNOWN>
+  valueType: TEXT
+- name: AGENT_IP
+  value: <UNKNOWN>
+  valueType: TEXT
+description: tp-emr-ds-metadata

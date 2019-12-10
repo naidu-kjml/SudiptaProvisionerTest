@@ -1,0 +1,13 @@
+harnessApiVersion: '1.0'
+type: OTHER
+commandUnitType: COMMAND
+commandUnits:
+- command: |-
+    #!/bin/bash -ex
+    [ ! -e ./shn_bin/unconfigure.py ] || ./shn_bin/unconfigure.py
+  commandUnitType: EXEC
+  deploymentType: SSH
+  name: Unconfigure
+  scriptType: BASH
+  workingDirectory: ${WINGS_RUNTIME_PATH}
+targetToAllEnv: true

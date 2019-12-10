@@ -1,0 +1,7 @@
+harnessApiVersion: '1.0'
+type: ARTIFACTORY
+artifactPattern: corp/awsqastable/ec-monitoring-ui-params-*.tgz
+metadataOnly: false
+repositoryName: shn-deployment-packages
+repositoryType: any
+serverName: corp-services artifactory - artidev

@@ -1,0 +1,7 @@
+harnessApiVersion: '1.0'
+type: ARTIFACTORY
+artifactPattern: com/shn/eukadish/eukadish/*/eukadish-*.tgz
+metadataOnly: true
+repositoryName: shn-bin-snapshots
+repositoryType: any
+serverName: corpshared artifactory

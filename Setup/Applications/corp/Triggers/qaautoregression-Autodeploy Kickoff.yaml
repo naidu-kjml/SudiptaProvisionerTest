@@ -1,0 +1,7 @@
+harnessApiVersion: '1.0'
+type: TRIGGER
+description: Deploys combined first 7 services per release recipe for QAAR then kicks off remaining pipelines.
+executionName: qaautoregression-Autodeploy -- Combined First 7
+executionType: Pipeline
+triggerCondition:
+- type: WEBHOOK

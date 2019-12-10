@@ -1,0 +1,11 @@
+harnessApiVersion: '1.0'
+type: OTHER
+commandUnitType: COMMAND
+commandUnits:
+- command: /sbin/ifconfig
+  commandUnitType: EXEC
+  deploymentType: SSH
+  name: Exec
+  scriptType: BASH
+  workingDirectory: /tmp
+targetToAllEnv: true
