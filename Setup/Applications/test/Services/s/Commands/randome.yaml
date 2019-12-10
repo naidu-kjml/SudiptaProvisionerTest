@@ -1,0 +1,30 @@
+harnessApiVersion: '1.0'
+type: VERIFY
+commandUnitType: COMMAND
+commandUnits:
+- command: |2-
+
+    # Execute as root and pass environment variables
+    # su -p -
+
+    # Execute as root via user credentials (with root privileges)
+    # sudo -E su -p -
+
+    # The following variables are absolute paths defined as:
+    # ${HOME}/${appName}/${serviceName}/${serviceTemplateName}/[runtime|backup|staging]
+
+    mkdir -p "$WINGS_RUNTIME_PATH"
+    mkdir -p "$WINGS_BACKUP_PATH"
+    mkdir -p "$WINGS_STAGING_PATH"
+  commandUnitType: SETUP_ENV
+  deploymentType: SSH
+  name: Setup Env
+  scriptType: BASH
+- command: |-
+    set -x
+    nc -v -z -w 5 localhost 8080
+  commandUnitType: PORT_CHECK_LISTENING
+  deploymentType: SSH
+  name: Port Listening
+  scriptType: BASH
+targetToAllEnv: true
