@@ -1,0 +1,38 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+description: deploys Connected Apps 4_4_0
+pipelineStages:
+- type: ENV_STATE
+  name: shnconnectedapps
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: caching-service
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-awsqastable
+  - entityType: SERVICE
+    name: Service
+    value: shnconnectedapps
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: awsqastable-shnconnectedapps
+- type: ENV_STATE
+  name: revelio
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: admin-portal
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-awsqastable
+  - entityType: SERVICE
+    name: Service
+    value: revelio
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: awsqastable-revelio

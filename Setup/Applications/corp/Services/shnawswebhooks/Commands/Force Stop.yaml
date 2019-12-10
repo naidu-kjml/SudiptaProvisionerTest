@@ -1,0 +1,19 @@
+harnessApiVersion: '1.0'
+type: OTHER
+commandUnitType: COMMAND
+commandUnits:
+- command: |
+    #!/bin/bash -ex
+    if ps aux | grep Dorg.linkedin.app.name=eureka | grep -v grep; then
+                    ps aux | grep Dorg.linkedin.app.name=eureka | grep -v grep | awk '{print $2}' | xargs kill
+                    sleep 1
+    fi
+    if ps aux | grep Dorg.linkedin.app.name=eureka | grep -v grep; then
+                    ps aux | grep Dorg.linkedin.app.name=eureka | grep -v grep | awk '{print $2}' | xargs kill -9
+    fi
+  commandUnitType: EXEC
+  deploymentType: SSH
+  name: Force Stop
+  scriptType: BASH
+  workingDirectory: ${WINGS_RUNTIME_PATH}
+targetToAllEnv: true

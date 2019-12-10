@@ -1,0 +1,7 @@
+harnessApiVersion: '1.0'
+type: ARTIFACTORY
+artifactPattern: com/shn/elk-utils/elk-utils/*/elk-utils-*.tgz
+metadataOnly: false
+repositoryName: shn-bin-releases
+repositoryType: any
+serverName: corp-services artifactory - artidev

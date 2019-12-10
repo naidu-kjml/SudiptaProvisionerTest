@@ -1,0 +1,18 @@
+harnessApiVersion: '1.0'
+type: ENVIRONMENT
+configMapYamlByServiceTemplateName: {}
+description: corp-corpshared
+environmentType: NON_PROD
+variableOverrides:
+- name: ARTIFACTORY_BASE_URL
+  value: http://artifactory.shared.int.shn.io:8081/artifactory
+  valueType: TEXT
+- name: FABRIC
+  value: corpshared
+  valueType: TEXT
+- name: SERVICE_NAME
+  value: ${service.name}
+  valueType: TEXT
+- name: ENV
+  value: corp
+  valueType: TEXT
