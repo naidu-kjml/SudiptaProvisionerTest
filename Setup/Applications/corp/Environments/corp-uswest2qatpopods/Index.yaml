@@ -1,0 +1,18 @@
+harnessApiVersion: '1.0'
+type: ENVIRONMENT
+configMapYamlByServiceTemplateName: {}
+description: corp-uswest2qatpopods
+environmentType: NON_PROD
+variableOverrides:
+- name: ARTIFACTORY_BASE_URL
+  value: http://artifactory.shared.int.shn.io:8081/artifactory
+  valueType: TEXT
+- name: FABRIC
+  value: uswest2qatpopods
+  valueType: TEXT
+- name: SERVICE_NAME
+  value: ${service.name}
+  valueType: TEXT
+- name: ENV
+  value: corp
+  valueType: TEXT

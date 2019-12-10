@@ -1,0 +1,181 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+description: deploy DLP per 4.4.0 recipe for qaautoregression
+pipelineStages:
+- type: ENV_STATE
+  name: Collect Builds
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: qaautoregression-Collect Builds -- APIDLP
+- type: ENV_STATE
+  name: shndirectory-service
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shndirectory-service
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: shndirectory-service
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-shndirectory-service
+- type: ENV_STATE
+  name: shn-drmintegration
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: IgnoreErrors (AM-19465)
+  workflowName: Deploy Service -rolling- 10-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: shn-drmintegration
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-shn-drmintegration
+- type: ENV_STATE
+  name: zeus-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: auton-ui
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: zeus-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-zeus-server
+- type: ENV_STATE
+  name: shnwebhooks
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: auton-ui
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: shnwebhooks
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-shnwebhooks
+- type: ENV_STATE
+  name: shndirectory-ingestion
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: auton-ui
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: shndirectory-ingestion
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-shndirectory-ingestion
+- type: ENV_STATE
+  name: shn-haraka
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: auton-ui
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: shnharaka
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-shnharaka
+- type: ENV_STATE
+  name: policy-management
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: auton-ui
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: policy-management
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-policy-management
+- type: ENV_STATE
+  name: dlp-incidents
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: auton-ui
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: dlp-incidents
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-dlp-incidents
+- type: ENV_STATE
+  name: auton-server
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: auton-ui
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: auton-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-auton-server
+- type: ENV_STATE
+  name: auton-ui
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: auton-ui
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- abort-on-failure--template-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: auton-ui
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-auton-ui
