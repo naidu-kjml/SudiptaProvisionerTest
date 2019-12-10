@@ -1,0 +1,8 @@
+harnessApiVersion: '1.0'
+type: SERVICE
+artifactType: AMI
+configVariables:
+- name: aaa
+  value: azurevault:cDJh4BRWRb-wBdhcv_4zcg
+  valueType: ENCRYPTED_TEXT
+deploymentType: AMI
