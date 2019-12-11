@@ -1,0 +1,7 @@
+harnessApiVersion: '1.0'
+type: ARTIFACTORY
+artifactPattern: /io/harness/e2e/echo/*/*.war
+metadataOnly: false
+repositoryName: functional-test
+repositoryType: any
+serverName: Harness Artifactory

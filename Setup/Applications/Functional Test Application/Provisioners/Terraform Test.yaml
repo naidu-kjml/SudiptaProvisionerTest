@@ -1,0 +1,11 @@
+harnessApiVersion: '1.0'
+type: TERRAFORM
+name: Terraform Test
+path: functionalTest/
+sourceRepoBranch: master
+sourceRepoSettingName: TERRAFORM_MAIN_GIT_REPO
+variables:
+- name: access_key
+  valueType: TEXT
+- name: secret_key
+  valueType: ENCRYPTED_TEXT
