@@ -1,4 +1,5 @@
 harnessApiVersion: '1.0'
 type: ENVIRONMENT
 configMapYamlByServiceTemplateName: {}
-environmentType: PROD
+description: a
+environmentType: NON_PROD
