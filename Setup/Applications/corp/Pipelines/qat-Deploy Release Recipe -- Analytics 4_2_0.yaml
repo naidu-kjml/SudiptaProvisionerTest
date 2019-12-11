@@ -1,0 +1,361 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+description: deploys shadow pipeline per 4.2.0 receipe
+pipelineStages:
+- type: ENV_STATE
+  name: dp-data-bridge
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-data-bridge
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-data-bridge
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-data-bridge-ultron
+- type: ENV_STATE
+  name: dp-wf-coord
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-wf-coord
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-wf-coord
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-wf-coord-ultron
+- type: ENV_STATE
+  name: dp-kafka-event-consumer
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-kafka-event-consumer
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-kafka-event-consumer
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-kafka-event-consumer-ultron
+- type: ENV_STATE
+  name: dp-user-detection
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-user-detection
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-user-detection
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-user-detection-params-ultron
+- type: ENV_STATE
+  name: dp-aggregation
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-aggregation
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-aggregation
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-aggregation-ultron
+- type: ENV_STATE
+  name: dp-anomaly
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-anomaly
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-anomaly
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-anomaly-ultron
+- type: ENV_STATE
+  name: dp-enterprise-riskscore
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-enterprise-riskscore
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-enterprise-riskscore
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-enterprise-riskscore-ultron
+- type: ENV_STATE
+  name: dp-event-drilldown
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-event-drilldown
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-event-drilldown
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-event-drilldown-ultron
+- type: ENV_STATE
+  name: dp-event-summary
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-event-summary
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-event-summary
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-event-summary-ultron
+- type: ENV_STATE
+  name: dp-iaas
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-iaas
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-iaas
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-iaas-ultron
+- type: ENV_STATE
+  name: ip-ghostwriter-resource-filter
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: ip-ghostwriter-resource-filter
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: ip-ghostwriter-resource-filter
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-ip-ghostwriter-resource-filter
+- type: ENV_STATE
+  name: ip-ghostwriter-detection
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: ip-ghostwriter-detection
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: ip-ghostwriter-detection
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-ip-ghostwriter-detection
+- type: ENV_STATE
+  name: dp-serviceaction-detection
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-serviceaction-detection
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-serviceaction-detection
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-serviceaction-detection-ultron
+- type: ENV_STATE
+  name: dp-unmatched-event-kafka-consumer
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-unmatched-event-kafka-consumer
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-unmatched-event-kafka-consumer
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-unmatched-event-kafka-consumer-ultron
+- type: ENV_STATE
+  name: dp-unmatched-event-counter-aggregator
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-unmatched-event-counter-aggregator
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-unmatched-event-counter-aggregator
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-unmatched-event-counter-aggregator-ultron
+- type: ENV_STATE
+  name: dp-unmatched-event-counter-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-unmatched-event-counter-persistor
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-unmatched-event-counter-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-unmatched-event-counter-persistor-ultron
+- type: ENV_STATE
+  name: stats-kafka-consumer
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: stats-kafka-consumer
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: stats-kafka-consumer
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-stats-kafka-consumer
+- type: ENV_STATE
+  name: shnanalytics-serv
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shnanalytics-serv
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shnanalytics-serv
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shnanalytics-serv
+- type: ENV_STATE
+  name: shnanalytics-events-microservice
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shnanalytics-events-microservice
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shnanalytics-events-microservice
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shnanalytics-events-microservice
+- type: ENV_STATE
+  name: stats-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: stats-server
+  workflowName: Deploy Service -rolling- 1-at-a-time-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: stats-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-stats-server
+- type: ENV_STATE
+  name: hadoop-logimporter
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: hadoop-logimporter
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: hadoop-logimporter
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-hadoop-logimporter-ultron
