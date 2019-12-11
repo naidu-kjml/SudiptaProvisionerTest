@@ -1,0 +1,33 @@
+harnessApiVersion: '1.0'
+type: START
+commandUnitType: COMMAND
+commandUnits:
+- command: java -jar "$WINGS_RUNTIME_PATH/$ARTIFACT_FILE_NAME"
+  commandUnitType: EXEC
+  deploymentType: SSH
+  name: Start Service
+  scriptType: BASH
+  workingDirectory: $WINGS_RUNTIME_PATH
+- command: |-
+    set -x
+    i=0
+    while [ "$i" -lt 30 ]
+    do
+      pgrep -f "$WINGS_RUNTIME_PATH/$ARTIFACT_FILE_NAME"
+      rc=$?
+      if [ "$rc" -eq 0 ]
+      then
+        exit 0
+        sleep 1
+        i=$((i+1))
+      else
+        sleep 1
+        i=$((i+1))
+      fi
+    done
+    exit 1
+  commandUnitType: PROCESS_CHECK_RUNNING
+  deploymentType: SSH
+  name: Process Running
+  scriptType: BASH
+targetToAllEnv: true

@@ -1,0 +1,28 @@
+harnessApiVersion: '1.0'
+type: TRIGGER
+artifactSelections:
+- artifactStreamName: shn-deployment-packages_corp_qaautoregression_metis-params---tgz
+  regex: false
+  serviceName: metis
+  type: LAST_COLLECTED
+- artifactStreamName: shn-deployment-packages_corp_qaautoregression_hubble-batch-params---tgz
+  regex: false
+  serviceName: hubble-batch
+  type: LAST_COLLECTED
+- artifactStreamName: shn-deployment-packages_corp_qaautoregression_content-scanner-params---tgz
+  regex: false
+  serviceName: content-scanner
+  type: LAST_COLLECTED
+- artifactStreamName: shn-deployment-packages_corp_qaautoregression_shn-drmintegration-params---tgz
+  regex: false
+  serviceName: shn-drmintegration
+  type: LAST_COLLECTED
+- artifactStreamName: shn-deployment-packages_corp_qaautoregression_zeus-server-params---tgz
+  regex: false
+  serviceName: zeus-server
+  type: LAST_COLLECTED
+description: Autodeployment for QAAR ODS PoP
+executionName: uswest2qaautoregressionpopods-Autodeploy
+executionType: Pipeline
+triggerCondition:
+- type: WEBHOOK

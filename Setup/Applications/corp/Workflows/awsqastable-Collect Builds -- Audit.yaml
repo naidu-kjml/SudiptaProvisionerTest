@@ -1,0 +1,34 @@
+harnessApiVersion: '1.0'
+type: BUILD
+description: Collect the latest builds for Config Audit services for awsqastable
+notificationRules:
+- conditions:
+  - FAILED
+  executionScope: WORKFLOW
+  notificationGroupAsExpression: false
+  userGroupAsExpression: false
+  userGroupIds:
+  - 0IDXOHmCRmOhH6iP-NwaVA
+phases:
+- daemonSet: false
+  name: Phase 1
+  phaseSteps:
+  - type: PREPARE_STEPS
+    name: Prepare Steps
+    stepsInParallel: false
+  - type: COLLECT_ARTIFACT
+    name: Collect Artifact
+    steps:
+    - type: ARTIFACT_COLLECTION
+      name: config-audit-api
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_awsqastable_config-audit-api-params---tgz
+        serviceName: config-audit-api
+        timeoutMillis: 300000
+    stepsInParallel: true
+  - type: WRAP_UP
+    name: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  statefulSet: false
+templatized: false

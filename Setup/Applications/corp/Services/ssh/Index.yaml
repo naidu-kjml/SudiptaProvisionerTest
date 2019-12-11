@@ -1,9 +1,0 @@
-harnessApiVersion: '1.0'
-type: SERVICE
-applicationStack: Standard Tomcat 7
-artifactType: WAR
-configVariables:
-- name: v
-  value: a
-  valueType: TEXT
-deploymentType: SSH

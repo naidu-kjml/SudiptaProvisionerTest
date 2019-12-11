@@ -1,0 +1,208 @@
+harnessApiVersion: '1.0'
+type: BUILD
+description: Collect the latest builds for TP components
+notificationRules:
+- conditions:
+  - FAILED
+  executionScope: WORKFLOW
+  notificationGroupAsExpression: false
+  userGroupAsExpression: false
+  userGroupIds:
+  - 0IDXOHmCRmOhH6iP-NwaVA
+phases:
+- daemonSet: false
+  name: Phase 1
+  phaseSteps:
+  - type: PREPARE_STEPS
+    name: Prepare Steps
+    stepsInParallel: false
+  - type: COLLECT_ARTIFACT
+    name: Collect Artifact
+    steps:
+    - type: ARTIFACT_COLLECTION
+      name: merlin
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_merlin-params---tgz
+        serviceName: merlin
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: si-serv
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_si-serv-params---tgz
+        serviceName: si-serv
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: netacuity-server
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_netacuity-server-params---tgz
+        serviceName: netacuity-server
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: druid-kafka-indexing
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_druid-kafka-indexing-params---tgz
+        serviceName: druid-kafka-indexing
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-dataservice
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-dataservice-params--tgz
+        serviceName: tp-dataservice
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: iaas-data-service
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_iaas-data-service-params---tgz
+        serviceName: iaas-data-service
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: neo-app
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_neo-app-params---tgz
+        serviceName: neo-app
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: merlin-ui
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_merlin-ui-params---tgz
+        serviceName: merlin-ui
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-stream-preprocessor
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-stream-preprocessor-params---tgz
+        serviceName: tp-stream-preprocessor
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-realtime
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-realtime-params---tgz
+        serviceName: tp-realtime
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-activity-persistor
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-activity-persistor-params---tgz
+        serviceName: tp-activity-persistor
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-anomaly-persistor
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-anomaly-persistor-params---tgz
+        serviceName: tp-anomaly-persistor
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-action-category-persistor
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-action-category-persistor-params---tgz
+        serviceName: tp-action-category-persistor
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-activity-enrichment
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-activity-enrichment-params---tgz
+        serviceName: tp-activity-enrichment
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-activity-kafka-publisher
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-activity-kafka-publisher-params---tgz
+        serviceName: tp-activity-kafka-publisher
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-counter-persistor
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-counter-persistor-params---tgz
+        serviceName: tp-counter-persistor
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-anomaly-detection
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-anomaly-detection-params---tgz
+        serviceName: tp-anomaly-detection
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-anomaly-kafka-publisher
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-anomaly-kafka-publisher-params---tgz
+        serviceName: tp-anomaly-kafka-publisher
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-threat-persistor
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-threat-persistor-params---tgz
+        serviceName: tp-threat-persistor
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-threat-detection
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-threat-detection-params---tgz
+        serviceName: tp-threat-detection
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: ip-resource-persistor
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_ip-resource-persistor-params---tgz
+        serviceName: ip-resource-persistor
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: ip-resource-kafka-consumer
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_ip-resource-kafka-consumer-params---tgz
+        serviceName: ip-resource-kafka-consumer
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-threshold-jobs
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-threshold-jobs-params---tgz
+        serviceName: tp-threshold-jobs
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-threshold-persistor
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-threshold-persistor-params---tgz
+        serviceName: tp-threshold-persistor
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-crate-data-trimmer
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-crate-data-trimmer-params---tgz
+        serviceName: tp-crate-data-trimmer
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-counter-aggregation
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-counter-aggregation-params---tgz
+        serviceName: tp-counter-aggregation
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-batch-jobs
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-batch-jobs-params---tgz
+        serviceName: tp-batch-jobs
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-user-agent-persistor
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-user-agent-persistor-params--tgz
+        serviceName: tp-user-agent-persistor
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-ds-metadata
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-ds-metadata-params---tgz
+        serviceName: tp-ds-metadata
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: tp-batch-compaction
+      properties:
+        artifactStreamName: shn-deployment-packages_corp_qat_tp-batch-compaction-params---tgz
+        serviceName: tp-batch-compaction
+        timeoutMillis: 300000
+    stepsInParallel: true
+  - type: WRAP_UP
+    name: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  statefulSet: false
+templatized: false
