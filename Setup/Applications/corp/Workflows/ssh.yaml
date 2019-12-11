@@ -35,6 +35,24 @@ phases:
     stepsInParallel: false
   - type: DISABLE_SERVICE
     name: Disable Service
+    steps:
+    - type: SHELL_SCRIPT
+      name: Shell Script
+      properties:
+        commandPath: null
+        connectionAttributes: null
+        executeOnDelegate: true
+        host: null
+        outputVars: ''
+        publishAsVar: false
+        scriptString: echo ${serviceVariable.v}
+        scriptType: BASH
+        sshKeyRef: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        tags: ''
+        templateVariables: ''
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: DEPLOY_SERVICE
     name: Deploy Service
