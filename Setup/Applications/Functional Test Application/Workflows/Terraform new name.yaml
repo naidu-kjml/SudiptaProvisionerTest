@@ -34,12 +34,13 @@ preDeploymentSteps:
     templateVariables: null
     templateVersion: null
     tfVarFiles: null
-    timeoutMillis: 30
+    timeoutMillis: 50000
     variables:
     - valueType: TEXT
       name: access_key
-      value: aa/J0RCUDrtib6njyGbZtCv2c+v
-    - valueType: ENCRYPTED_TEXT
+      value: a
+    - valueType: TEXT
       name: secret_key
-      value: PneJNGVjSjW8aZkV0wd6Jg
+      value: as
+    workspace: assa
 templatized: false
