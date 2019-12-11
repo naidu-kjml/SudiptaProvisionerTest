@@ -1,0 +1,33 @@
+harnessApiVersion: '1.0'
+type: INSTALL
+commandUnitType: COMMAND
+commandUnits:
+- command: |2-
+
+    # Execute as root and pass environment variables
+    # su -p -
+
+    # Execute as root via user credentials (with root privileges)
+    # sudo -E su -p -
+
+    # The following variables are absolute paths defined as:
+    # ${HOME}/${appName}/${serviceName}/${serviceTemplateName}/[runtime|backup|staging]
+
+    mkdir -p "$WINGS_RUNTIME_PATH"
+    mkdir -p "$WINGS_BACKUP_PATH"
+    mkdir -p "$WINGS_STAGING_PATH"
+  commandUnitType: SETUP_ENV
+  deploymentType: SSH
+  name: Setup Runtime Paths
+  scriptType: BASH
+- artifactVariableName: artifact
+  commandUnitType: SCP
+  deploymentType: SSH
+  destinationDirectoryPath: $WINGS_RUNTIME_PATH
+  name: Copy Artifact
+  source: ARTIFACTS
+- commandUnitType: COPY_CONFIGS
+  deploymentType: SSH
+  destinationParentPath: $WINGS_RUNTIME_PATH
+  name: Copy Configs
+targetToAllEnv: true
