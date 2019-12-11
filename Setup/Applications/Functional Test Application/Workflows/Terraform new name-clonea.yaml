@@ -1,0 +1,46 @@
+harnessApiVersion: '1.0'
+type: CANARY
+concurrencyStrategy: INFRA
+envName: FunctionalTest Environment
+failureStrategies:
+- executionScope: WORKFLOW
+  failureTypes:
+  - APPLICATION_ERROR
+  repairActionCode: ROLLBACK_WORKFLOW
+  retryCount: 0
+notificationRules:
+- conditions:
+  - FAILED
+  executionScope: WORKFLOW
+  notificationGroupAsExpression: false
+  userGroupAsExpression: false
+  userGroupIds:
+  - A6SmNLLISgG2OHcbs1zSpA
+postDeploymentSteps:
+- type: TERRAFORM_DESTROY
+  name: Terraform Destroy
+  properties:
+    provisionerName: Terraform Test
+preDeploymentSteps:
+- type: TERRAFORM_PROVISION
+  name: Terraform Provision
+  properties:
+    backendConfigs: null
+    inheritApprovedPlan: false
+    provisionerName: Terraform Test
+    runPlanOnly: false
+    targets: null
+    templateUuid: null
+    templateVariables: null
+    templateVersion: null
+    tfVarFiles: null
+    timeoutMillis: 500002
+    variables:
+    - valueType: TEXT
+      name: access_key
+      value: a
+    - valueType: TEXT
+      name: secret_key
+      value: as
+    workspace: assa
+templatized: false
