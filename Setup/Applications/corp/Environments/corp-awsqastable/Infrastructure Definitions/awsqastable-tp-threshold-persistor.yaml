@@ -6,15 +6,16 @@ infrastructure:
 - type: AWS_SSH
   awsInstanceFilter:
     tags:
-    - key: service.ip-emr-flow-log-kafka-consumer
+    - key: service.tp-threshold-persistor
       value: active
     vpcIds:
-    - vpc-0621b33b5ea028668
+    - vpc-0ba270f66c06dedd6
   cloudProviderName: shncasb
   desiredCapacity: 0
   hostConnectionAttrsName: shn-harness
-  hostNameConvention: ${host.ec2Instance.privateDnsName.split('\.')[0]}
   region: us-west-2
   setDesiredCapacity: false
   useAutoScalingGroup: false
   usePublicDns: false
+scopedServices:
+- tp-threshold-persistor
