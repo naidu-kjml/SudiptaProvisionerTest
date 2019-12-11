@@ -25,12 +25,21 @@ preDeploymentSteps:
 - type: TERRAFORM_PROVISION
   name: Terraform Provision
   properties:
+    backendConfigs: null
+    inheritApprovedPlan: false
     provisionerName: Terraform Test
+    runPlanOnly: false
+    targets: null
+    templateUuid: null
+    templateVariables: null
+    templateVersion: null
+    tfVarFiles: null
+    timeoutMillis: 30
     variables:
     - valueType: TEXT
       name: access_key
-      value: udo6OkOATXXGFZR/J0RCUDrtib6njyGbZtCv2c+v
+      value: aa/J0RCUDrtib6njyGbZtCv2c+v
     - valueType: ENCRYPTED_TEXT
       name: secret_key
-      value: KobOlJUvRxmRS_dBxJbxyA
+      value: PneJNGVjSjW8aZkV0wd6Jg
 templatized: false
