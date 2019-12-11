@@ -1,0 +1,236 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+description: all EMR DP* components
+pipelineStages:
+- type: ENV_STATE
+  name: dp-data-bridge
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-data-bridge
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-data-bridge
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-data-bridge
+- type: APPROVAL
+  name: Approval 1
+  parallel: false
+  properties:
+    userGroups:
+    - DL3rmeU6R9qGJlYJCEhWTA
+    timeoutMillis: 604800000
+    approvalStateType: USER_GROUP
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+- type: ENV_STATE
+  name: dp-emr-user-detection
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-emr-user-detection
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-emr-user-detection
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-emr-user-detection
+- type: ENV_STATE
+  name: dp-emr-event-summary
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-emr-event-summary
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-emr-event-summary
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-emr-event-summary
+- type: ENV_STATE
+  name: dp-emr-aggregation
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-emr-aggregation
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-emr-aggregation
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-emr-aggregation
+- type: ENV_STATE
+  name: dp-emr-anomaly
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-emr-anomaly
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-emr-anomaly
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-emr-anomaly
+- type: ENV_STATE
+  name: dp-emr-enterprise-riskscore
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-emr-enterprise-riskscore
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-emr-enterprise-riskscore
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-emr-enterprise-riskscore
+- type: ENV_STATE
+  name: dp-emr-event-drilldown
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-emr-event-drilldown
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-emr-event-drilldown
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-emr-event-drilldown
+- type: ENV_STATE
+  name: dp-emr-iaas
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-emr-iaas
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-emr-iaas
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-emr-iaas
+- type: ENV_STATE
+  name: dp-emr-serviceaction-detection
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-emr-serviceaction-detection
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-emr-serviceaction-detection
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-emr-serviceaction-detection
+- type: ENV_STATE
+  name: dp-emr-unmatched-event-kafka-consumer
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-emr-unmatched-event-kafka-consumer
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-emr-unmatched-event-kafka-consumer
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-emr-unmatched-event-kafka-consumer
+- type: ENV_STATE
+  name: dp-emr-unmatched-event-counter-aggregator
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-emr-unmatched-event-counter-aggregator
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-emr-unmatched-event-counter-aggregator
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-emr-unmatched-event-counter-aggregator
+- type: ENV_STATE
+  name: dp-emr-kafka-event-consumer
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-emr-unmatched-event-counter-aggregator
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-awsqastable
+  - entityType: SERVICE
+    name: Service
+    value: dp-kafka-event-consumer
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: awsqastable-dp-kafka-event-consumer
+- type: ENV_STATE
+  name: dp-emr-unmatched-event-counter-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-emr-unmatched-event-counter-aggregator
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-emr-unmatched-event-counter-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-emr-unmatched-event-counter-persistor

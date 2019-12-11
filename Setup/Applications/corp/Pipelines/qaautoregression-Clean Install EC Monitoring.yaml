@@ -1,0 +1,111 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+pipelineStages:
+- type: ENV_STATE
+  name: Install ec-datacopier-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Install ec-datacopier-server
+  workflowName: DO NOT USE - Install Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: ec-datacopier-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-ec-datacopier-server
+- type: ENV_STATE
+  name: Configure ec-datacopier-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Configure ec-datacopier-server
+  workflowName: DO NOT USE - Configure Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: ec-datacopier-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-ec-datacopier-server
+- type: APPROVAL
+  name: Approval 2
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Approval 2
+- type: ENV_STATE
+  name: Start ec-datacopier-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Start ec-datacopier-server
+  workflowName: Start Service
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: ec-datacopier-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-ec-datacopier-server
+- type: ENV_STATE
+  name: Deploy ec-monitor-processor
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Deploy ec-monitor-processor
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: ec-monitor-processor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-ec-monitor-processor
+- type: ENV_STATE
+  name: Deploy ec-monitor-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Deploy ec-monitor-server
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: ec-monitor-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-ec-monitor-server
+- type: ENV_STATE
+  name: Deploy ec-monitoring-ui
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Deploy ec-monitoring-ui
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: ec-monitoring-ui
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-ec-monitoring-ui

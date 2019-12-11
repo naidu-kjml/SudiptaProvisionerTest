@@ -1,0 +1,1312 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+pipelineStages:
+- type: ENV_STATE
+  name: neo-api-gateway
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: neo-api-gateway
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: neo-api-gateway
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-neo-api-gateway
+- type: ENV_STATE
+  name: neo-auth-service
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: neo-auth-service
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: neo-auth-service
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-neo-auth-service
+- type: ENV_STATE
+  name: shnapi
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shnapi
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shnapi
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shnapi
+- type: ENV_STATE
+  name: watchtower-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: watchtower-server
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: watchtower-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-watchtower-server
+- type: ENV_STATE
+  name: shndlpapi-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shndlpapi-server
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shndlpapi-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shndlpapi-server
+- type: ENV_STATE
+  name: messenger-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: messenger-server
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: messenger-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-messenger-server
+- type: ENV_STATE
+  name: shnproxyapi
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shnproxyapi
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shnproxyapi
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shnproxyapi
+- type: ENV_STATE
+  name: caching-service
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: caching-service
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: caching-service
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-caching-service
+- type: ENV_STATE
+  name: events-analytics-service
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: events-analytics-service
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: events-analytics-service
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-events-analytics-service
+- type: ENV_STATE
+  name: service-workflow
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: service-workflow
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: service-workflow
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-service-workflow
+- type: ENV_STATE
+  name: shn-notification-service
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shn-notification-service
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shn-notification-service
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shn-notification-service
+- type: ENV_STATE
+  name: shnadmin-service
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shnadmin-service
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shnadmin-service
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shnadmin-server
+- type: ENV_STATE
+  name: admin-portal
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: admin-portal
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: admin-portal
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-admin-portal
+- type: ENV_STATE
+  name: dashboard
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dashboard
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dashboard
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dashboard
+- type: ENV_STATE
+  name: setup-and-configuration
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: setup-and-configuration
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: setup-and-configuration
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-setup-and-configuration
+- type: ENV_STATE
+  name: usage-analytics
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: usage-analytics
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: usage-analytics
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-usage-analytics
+- type: ENV_STATE
+  name: hystrix
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: hystrix
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: hystrixdashboard
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-hystrixdashboard
+- type: ENV_STATE
+  name: reporting-service
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: reporting-service
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: reporting-service
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-reporting-service
+- type: ENV_STATE
+  name: neo-reporting-engine
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: neo-reporting-engine
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: neo-reporting-engine
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-neo-reporting-engine
+- type: ENV_STATE
+  name: shndirectory-service
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shndirectory-service
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shndirectory-service
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shndirectory-service
+- type: ENV_STATE
+  name: shn-drmintegration
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shn-drmintegration
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shn-drmintegration
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shn-drmintegration
+- type: ENV_STATE
+  name: zeus-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: zeus-server
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: zeus-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-zeus-server
+- type: ENV_STATE
+  name: shnwebhooks
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shnwebhooks
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shnwebhooks
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shnwebhooks
+- type: ENV_STATE
+  name: shn-sharepoint-dlp
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shn-sharepoint-dlp
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shn-sharepoint-dlp
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shn-sharepoint-dlp
+- type: ENV_STATE
+  name: shndirectory-ingestion
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shndirectory-ingestion
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shndirectory-ingestion
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shndirectory-ingestion
+- type: ENV_STATE
+  name: metis
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: metis
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: metis
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-metis
+- type: ENV_STATE
+  name: content-scanner
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: content-scanner
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: content-scanner
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-content-scanner
+- type: ENV_STATE
+  name: shn-haraka
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shn-haraka
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shnharaka
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shnharaka
+- type: ENV_STATE
+  name: policy-management
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: policy-management
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: policy-management
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-policy-management
+- type: ENV_STATE
+  name: ec-datacopier-server
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: ec-datacopier-server
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: ec-datacopier-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-ec-datacopier-server
+- type: ENV_STATE
+  name: shnlogcollectorapp
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shnlogcollectorapp
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shnlogcollectorapp
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shnlogcollectorapp
+- type: ENV_STATE
+  name: merlin
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: merlin
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: merlin
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-merlin
+- type: ENV_STATE
+  name: merlin-ui
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: merlin-ui
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: merlin-ui
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-merlin-ui
+- type: ENV_STATE
+  name: neo-app
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: neo-app
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: neo-app
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-neo-app
+- type: ENV_STATE
+  name: dlp-incidents
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dlp-incidents
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dlp-incidents
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dlp-incidents
+- type: ENV_STATE
+  name: tp-dataservice
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-dataservice
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-dataservice
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-dataservice
+- type: ENV_STATE
+  name: tp-activity-enrichment
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-activity-enrichment
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-activity-enrichment
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-activity-enrichment
+- type: ENV_STATE
+  name: tp-activity-kafka-publisher
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-activity-kafka-publisher
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-activity-kafka-publisher
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-activity-kafka-publisher
+- type: ENV_STATE
+  name: tp-activity-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-activity-persistor
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-activity-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-activity-persistor
+- type: ENV_STATE
+  name: tp-anomaly-detection
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-anomaly-detection
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-anomaly-detection
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-anomaly-detection
+- type: ENV_STATE
+  name: tp-anomaly-kafka-publisher
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-anomaly-kafka-publisher
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-anomaly-kafka-publisher
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-anomaly-kafka-publisher
+- type: ENV_STATE
+  name: tp-anomaly-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-anomaly-persistor
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-anomaly-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-anomaly-persistor
+- type: ENV_STATE
+  name: ' tp-batch-compaction'
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: ' tp-batch-compaction'
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-batch-compaction
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-batch-compaction
+- type: ENV_STATE
+  name: tp-batch-jobs
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-batch-jobs
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-batch-jobs
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-batch-jobs
+- type: ENV_STATE
+  name: tp-counter-aggregation
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-counter-aggregation
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-counter-aggregation
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-counter-aggregation
+- type: ENV_STATE
+  name: tp-counter-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-counter-persistor
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-counter-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-counter-persistor
+- type: ENV_STATE
+  name: tp-realtime
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-realtime
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-realtime
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-realtime
+- type: ENV_STATE
+  name: tp-stream-preprocessor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-stream-preprocessor
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-stream-preprocessor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-stream-preprocessor
+- type: ENV_STATE
+  name: tp-threat-detection
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threat-detection
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-threat-detection
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-threat-detection
+- type: ENV_STATE
+  name: tp-threat-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tp-threat-persistor
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tp-threat-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tp-threat-persistor
+- type: ENV_STATE
+  name: config-audit-batch
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: config-audit-batch
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: config-audit-batch
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-config-audit-batch
+- type: ENV_STATE
+  name: config-audit-api
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: config-audit-api
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: config-audit-api
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-config-audit-api
+- type: ENV_STATE
+  name: dp-data-bridge
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-data-bridge
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-data-bridge
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-data-bridge-ultron
+- type: ENV_STATE
+  name: dp-wf-coord
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-wf-coord
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-wf-coord
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-wf-coord-ultron
+- type: ENV_STATE
+  name: dp-kafka-event-consumer
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-kafka-event-consumer
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-kafka-event-consumer
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-kafka-event-consumer-ultron
+- type: ENV_STATE
+  name: dp-user-detection
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-user-detection
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-user-detection
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-user-detection-params-ultron
+- type: ENV_STATE
+  name: dp-aggregation
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-aggregation
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-aggregation
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-aggregation-ultron
+- type: ENV_STATE
+  name: dp-anomaly
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-anomaly
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-anomaly
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-anomaly-ultron
+- type: ENV_STATE
+  name: dp-enterprise-riskscore
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-enterprise-riskscore
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-enterprise-riskscore
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-enterprise-riskscore-ultron
+- type: ENV_STATE
+  name: dp-event-drilldown
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-event-drilldown
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-event-drilldown
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-event-drilldown-ultron
+- type: ENV_STATE
+  name: dp-event-summary
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-event-summary
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-event-summary
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-event-summary-ultron
+- type: ENV_STATE
+  name: dp-iaas
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-iaas
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-iaas
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-iaas-ultron
+- type: ENV_STATE
+  name: ip-ghostwriter-resource-filter
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: ip-ghostwriter-resource-filter
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: ip-ghostwriter-resource-filter
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-ip-ghostwriter-resource-filter
+- type: ENV_STATE
+  name: ip-ghostwriter-detection
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: ip-ghostwriter-detection
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: ip-ghostwriter-detection
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-ip-ghostwriter-detection
+- type: ENV_STATE
+  name: dp-serviceaction-detection
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-serviceaction-detection
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-serviceaction-detection
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-serviceaction-detection-ultron
+- type: ENV_STATE
+  name: dp-unmatched-event-kafka-consumer
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-unmatched-event-kafka-consumer
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-unmatched-event-kafka-consumer
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-unmatched-event-kafka-consumer-ultron
+- type: ENV_STATE
+  name: dp-unmatched-event-counter-aggregator
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-unmatched-event-counter-aggregator
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-unmatched-event-counter-aggregator
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-unmatched-event-counter-aggregator-ultron
+- type: ENV_STATE
+  name: dp-unmatched-event-counter-persistor
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: dp-unmatched-event-counter-persistor
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: dp-unmatched-event-counter-persistor
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-dp-unmatched-event-counter-persistor-ultron
+- type: ENV_STATE
+  name: stats-kafka-consumer
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: stats-kafka-consumer
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: stats-kafka-consumer
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-stats-kafka-consumer
+- type: ENV_STATE
+  name: shnanalytics-serv
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shnanalytics-serv
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shnanalytics-serv
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shnanalytics-serv
+- type: ENV_STATE
+  name: shnanalytics-events-microservice
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shnanalytics-events-microservice
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shnanalytics-events-microservice
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shnanalytics-events-microservice
+- type: ENV_STATE
+  name: stats-server
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: stats-server
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: stats-server
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-stats-server
+- type: ENV_STATE
+  name: hadoop-logimporter
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: hadoop-logimporter
+  workflowName: Deploy Service -parallel- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: hadoop-logimporter
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-hadoop-logimporter-ultron
+- type: ENV_STATE
+  name: tenant-onboarding
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: tenant-onboarding
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: tenant-onboarding
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-tenant-onboarding
+- type: ENV_STATE
+  name: shn-self-service
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shn-self-service
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shn-self-service
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shn-self-service
+- type: ENV_STATE
+  name: shnconnectedapps
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: shnconnectedapps
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: shnconnectedapps
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-shnconnectedapps
+- type: ENV_STATE
+  name: revelio
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: revelio
+  workflowName: Deploy Service -rolling- 10 percent-at-a-time- ignore errors-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qat
+  - entityType: SERVICE
+    name: Service
+    value: revelio
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qat-revelio

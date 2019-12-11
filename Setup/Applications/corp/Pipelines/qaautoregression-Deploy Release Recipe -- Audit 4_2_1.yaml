@@ -1,0 +1,38 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+description: deploys Config Audit services per 4.2.1 receipes
+pipelineStages:
+- type: ENV_STATE
+  name: config-audit-batch
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: config-audit-batch
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: config-audit-batch
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-config-audit-batch
+- type: ENV_STATE
+  name: config-audit-api
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: config-audit-api
+  workflowName: Deploy Service -parallel-
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: corp-qaautoregression
+  - entityType: SERVICE
+    name: Service
+    value: config-audit-api
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_SSH
+    value: qaautoregression-config-audit-api
