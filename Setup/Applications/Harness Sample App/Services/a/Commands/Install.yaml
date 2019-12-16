@@ -1,0 +1,16 @@
+harnessApiVersion: '1.0'
+type: INSTALL
+commandUnitType: COMMAND
+targetToAllEnv: true
+templateUri: Yogesh Chauhan-5161/Power Shell Commands/Install IIS Application:latest
+templateVariables:
+- name: ReleaseNo
+- name: ServiceName
+- name: AppPoolName
+  value: DefaultAppPool
+- name: AppPoolDotNetVersion
+  value: v4.0
+- name: DownloadDirectory
+  value: $env:TEMP
+- name: AppPhysicalDirectory
+  value: $env:SYSTEMDRIVE
