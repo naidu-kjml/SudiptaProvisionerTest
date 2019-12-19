@@ -1,9 +1,9 @@
 variable "a" {}
-variable "b" {}
+variable "sleep" {}
 
 resource "null_resource" "delay" {
   provisioner "local-exec" {
-    command = var.b
+    command = var.sleep
     interpreter = ["/bin/sleep"]
   }
 }
