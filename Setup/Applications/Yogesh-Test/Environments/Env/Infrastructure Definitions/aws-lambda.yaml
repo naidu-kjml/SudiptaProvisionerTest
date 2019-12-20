@@ -1,0 +1,24 @@
+harnessApiVersion: '1.0'
+type: INFRA_DEFINITION
+cloudProviderType: AWS
+deploymentType: AWS_LAMBDA
+infrastructure:
+- type: AWS_AWS_LAMBDA
+  cloudProviderName: aws_integration_acc_QE
+  iamRole: arn:aws:iam::733017110293:role/aws-service-role/support.amazonaws.com/AWSServiceRoleForSupport
+  region: us-east-1
+  securityGroupIds:
+  - sg-0174bcd3e78e33821
+  - sg-02170bddc115306cc
+  - sg-02b1469f118cb8b74
+  - sg-045c6564697dac2b0
+  - sg-049e6cd73d99f6d06
+  - sg-05855fe3470a12e05
+  subnetIds:
+  - subnet-51fe3c36
+  - subnet-3e0d1f01
+  - subnet-9948c4d3
+  - subnet-3669906a
+  - subnet-7288725c
+  - subnet-5353d85c
+  vpcId: vpc-cb083fb0
