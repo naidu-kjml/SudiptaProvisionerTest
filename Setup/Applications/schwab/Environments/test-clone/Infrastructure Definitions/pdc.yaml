@@ -1,0 +1,10 @@
+harnessApiVersion: '1.0'
+type: INFRA_DEFINITION
+cloudProviderType: PHYSICAL_DATA_CENTER
+deploymentType: SSH
+infrastructure:
+- type: PHYSICAL_DATA_CENTER_SSH
+  cloudProviderName: PHYSICAL_DATA_CENTER
+  hostConnectionAttrsName: Wings Key
+  hostNames:
+  - localhost
