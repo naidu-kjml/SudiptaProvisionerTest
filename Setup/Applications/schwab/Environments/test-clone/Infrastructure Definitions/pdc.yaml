@@ -7,4 +7,4 @@ infrastructure:
   cloudProviderName: PHYSICAL_DATA_CENTER
   hostConnectionAttrsName: Wings Key
   hostNames:
-  - aada
+  - localhost
