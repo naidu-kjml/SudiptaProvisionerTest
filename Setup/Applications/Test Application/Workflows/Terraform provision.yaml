@@ -1,0 +1,36 @@
+harnessApiVersion: '1.0'
+type: CANARY
+concurrencyStrategy: INFRA
+envName: Test Environment
+failureStrategies:
+- executionScope: WORKFLOW
+  failureTypes:
+  - APPLICATION_ERROR
+  repairActionCode: ROLLBACK_WORKFLOW
+  retryCount: 0
+notificationRules:
+- conditions:
+  - FAILED
+  executionScope: WORKFLOW
+  notificationGroupAsExpression: false
+  userGroupAsExpression: false
+  userGroupIds:
+  - y4UkZYc1Q2GwI7w6vRw-sw
+postDeploymentSteps:
+- type: TERRAFORM_DESTROY
+  name: Deprovision infra
+  properties:
+    provisionerName: Harness Terraform Test
+preDeploymentSteps:
+- type: TERRAFORM_PROVISION
+  name: Provision infra
+  properties:
+    provisionerName: Harness Terraform Test
+    variables:
+    - name: access_key
+      value: AKIAIIDYSBNXALU3WECA
+      valueType: TEXT
+    - name: secret_key
+      value: 2D_YlsU9S6OzNUrnd6lS3Q
+      valueType: ENCRYPTED_TEXT
+templatized: false

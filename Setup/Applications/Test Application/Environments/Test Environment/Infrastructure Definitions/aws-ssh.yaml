@@ -1,0 +1,13 @@
+harnessApiVersion: '1.0'
+type: INFRA_DEFINITION
+cloudProviderType: AWS
+deploymentType: SSH
+infrastructure:
+- type: AWS_SSH
+  cloudProviderName: AWS_TEST_CLOUD_PROVIDER
+  desiredCapacity: 0
+  hostConnectionAttrsName: DEV_TEST_CONNECTOR
+  region: us-east-1
+  setDesiredCapacity: false
+  useAutoScalingGroup: false
+  usePublicDns: false
