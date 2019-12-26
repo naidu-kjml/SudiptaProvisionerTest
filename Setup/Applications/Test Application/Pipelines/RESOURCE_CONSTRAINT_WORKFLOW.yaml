@@ -1,0 +1,24 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+pipelineStages:
+- type: ENV_STATE
+  name: Resource Constraint 1
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Resource Constraint 1
+- type: ENV_STATE
+  name: Resource Constraint 2
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Resource Constraint 2
+- type: ENV_STATE
+  name: Resource Constraint 3
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Resource Constraint 3

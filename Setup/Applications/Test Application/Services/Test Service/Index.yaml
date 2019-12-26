@@ -1,0 +1,5 @@
+harnessApiVersion: '1.0'
+type: SERVICE
+artifactType: WAR
+deploymentType: SSH
+description: ssxvnJHpDqdxVCrAsTVYbcwv

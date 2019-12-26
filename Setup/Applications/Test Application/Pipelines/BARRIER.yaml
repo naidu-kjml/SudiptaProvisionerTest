@@ -1,0 +1,32 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+description: This is pipeline to test barriers
+pipelineStages:
+- type: ENV_STATE
+  name: Parallel section 1-1
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Barrier Parallel Section 1-1
+- type: ENV_STATE
+  name: Parallel section 1-2
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Barrier Parallel Section 1-2
+- type: ENV_STATE
+  name: Parallel section 2-1
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+  workflowName: Barrier Parallel Section 2-1
+- type: ENV_STATE
+  name: Parallel section 2-2
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+  workflowName: Barrier Parallel Section 2-2
