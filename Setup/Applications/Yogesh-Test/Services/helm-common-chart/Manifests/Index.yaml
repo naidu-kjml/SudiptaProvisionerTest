@@ -1,0 +1,6 @@
+harnessApiVersion: '1.0'
+type: APPLICATION_MANIFEST
+helmChartConfig:
+  chartName: common-chart-ex
+  connectorName: helm-yogesh
+storeType: HelmChartRepo
