@@ -1,6 +1,0 @@
-harnessApiVersion: '1.0'
-type: APPLICATION_MANIFEST
-helmChartConfig:
-  chartName: todolist
-  chartUrl: http://s3.amazonaws.com/harness-helm-charts/
-storeType: HelmChartRepo

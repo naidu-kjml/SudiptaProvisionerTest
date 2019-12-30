@@ -1,4 +1,0 @@
-harnessApiVersion: '1.0'
-type: SHELL_SCRIPT
-name: sspdc
-scriptBody: a
