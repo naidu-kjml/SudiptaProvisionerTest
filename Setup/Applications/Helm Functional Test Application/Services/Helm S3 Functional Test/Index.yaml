@@ -3,6 +3,6 @@ type: SERVICE
 artifactType: DOCKER
 configVariables:
 - name: a
-  value: c
+  value: ca
   valueType: TEXT
 deploymentType: HELM
