@@ -6,3 +6,4 @@ configVariables:
   value: c
   valueType: TEXT
 deploymentType: HELM
+helmVersion: V3
