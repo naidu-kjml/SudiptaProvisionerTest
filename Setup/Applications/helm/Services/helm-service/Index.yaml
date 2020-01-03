@@ -1,0 +1,9 @@
+harnessApiVersion: '1.0'
+type: SERVICE
+artifactType: DOCKER
+configVariables:
+- name: service_branch
+  value: master
+  valueType: TEXT
+deploymentType: HELM
+helmVersion: V2

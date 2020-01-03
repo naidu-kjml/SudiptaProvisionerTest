@@ -1,0 +1,8 @@
+harnessApiVersion: '1.0'
+type: APPLICATION_MANIFEST
+gitFileConfig:
+  branch: ${serviceVariable.service_branch}
+  connectorName: Helm Source Repo
+  filePath: stable/chartmuseum
+  useBranch: true
+storeType: HelmSourceRepo
