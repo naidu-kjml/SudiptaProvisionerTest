@@ -1,4 +1,8 @@
 harnessApiVersion: '1.0'
 type: SERVICE
 artifactType: DOCKER
+configVariables:
+- name: a
+  value: c
+  valueType: TEXT
 deploymentType: HELM
