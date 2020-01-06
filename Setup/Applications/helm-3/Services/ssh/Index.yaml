@@ -3,3 +3,4 @@ type: SERVICE
 applicationStack: Standard Tomcat 7
 artifactType: WAR
 deploymentType: SSH
+helmVersion: V2
