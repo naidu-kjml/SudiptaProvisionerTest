@@ -1,0 +1,10 @@
+harnessApiVersion: '1.0'
+type: INFRA_DEFINITION
+cloudProviderType: GCP
+deploymentType: HELM
+infrastructure:
+- type: GCP_KUBERNETES
+  cloudProviderName: playground-gke-gcs-gcr
+  clusterName: us-central1-a/harness-test
+  namespace: default
+  releaseName: ${infra.kubernetes.infraId}
