@@ -44,7 +44,7 @@ phases:
     name: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: helm-service
+  serviceName: helm-service-clone
   statefulSet: false
 rollbackPhases:
 - type: HELM
@@ -71,6 +71,6 @@ rollbackPhases:
     name: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: helm-service
+  serviceName: helm-service-clone
   statefulSet: false
 templatized: false
