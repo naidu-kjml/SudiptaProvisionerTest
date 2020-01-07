@@ -18,9 +18,9 @@ notificationRules:
   - QpFsw0bIR_iWT4MKWygzog
 phases:
 - type: HELM
-  computeProviderName: playground-gke-gcs-gcr
+  computeProviderName: Test Azure Cloud Provider
   daemonSet: false
-  infraDefinitionName: helm
+  infraDefinitionName: Azure-helm
   name: Phase 1
   phaseSteps:
   - type: HELM_DEPLOY
@@ -48,9 +48,9 @@ phases:
   statefulSet: false
 rollbackPhases:
 - type: HELM
-  computeProviderName: playground-gke-gcs-gcr
+  computeProviderName: Test Azure Cloud Provider
   daemonSet: false
-  infraDefinitionName: helm
+  infraDefinitionName: Azure-helm
   name: Rollback Phase 1
   phaseNameForRollback: Phase 1
   phaseSteps:
