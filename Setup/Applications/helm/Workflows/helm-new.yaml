@@ -30,7 +30,7 @@ phases:
       name: Helm Deploy
       properties:
         gitFileConfig: null
-        helmReleaseNamePrefix: helm-2
+        helmReleaseNamePrefix: helm-new
         steadyStateTimeout: 10
         templateExpressions: null
         templateUuid: null
