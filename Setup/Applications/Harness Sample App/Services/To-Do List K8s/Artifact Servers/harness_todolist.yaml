@@ -1,0 +1,4 @@
+harnessApiVersion: '1.0'
+type: DOCKER
+imageName: harness/todolist-sample
+serverName: Harness Docker Hub
