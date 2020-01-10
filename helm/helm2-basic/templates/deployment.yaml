@@ -1,31 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "test-chart-helm3.fullname" . }}
+  name: {{ include "helm2-basic.fullname" . }}
   labels:
-    {{- include "test-chart-helm3.labels" . | nindent 4 }}
+{{ include "helm2-basic.labels" . | indent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "test-chart-helm3.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/name: {{ include "helm2-basic.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        {{- include "test-chart-helm3.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/name: {{ include "helm2-basic.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      serviceAccountName: {{ include "test-chart-helm3.serviceAccountName" . }}
+      serviceAccountName: {{ template "helm2-basic.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
