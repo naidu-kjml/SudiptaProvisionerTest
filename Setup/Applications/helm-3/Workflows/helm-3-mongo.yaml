@@ -1,7 +1,7 @@
 harnessApiVersion: '1.0'
 type: CANARY
 concurrencyStrategy: INFRA
-envName: gcp
+envName: azure
 failureStrategies:
 - executionScope: WORKFLOW
   failureTypes:
@@ -16,17 +16,4 @@ notificationRules:
   userGroupAsExpression: false
   userGroupIds:
   - QpFsw0bIR_iWT4MKWygzog
-templateExpressions:
-- expression: ${Environment}
-  fieldName: envId
-  metadata:
-  - name: relatedField
-  - name: entityType
-    value: ENVIRONMENT
-templatized: true
-userVariables:
-- type: ENTITY
-  description: Variable for Environment entity
-  fixed: false
-  mandatory: true
-  name: Environment
+templatized: false
