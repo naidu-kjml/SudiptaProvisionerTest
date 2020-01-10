@@ -25,6 +25,12 @@ phases:
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
+    steps:
+    - type: K8S_APPLY
+      name: Apply
+      properties:
+        filePaths: templates/deployment.yaml
+        stateTimeoutInMinutes: '10'
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
