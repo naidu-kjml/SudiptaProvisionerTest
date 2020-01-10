@@ -46,6 +46,14 @@ phases:
   provisionNodes: false
   serviceName: helm-3
   statefulSet: false
+  templateExpressions:
+  - expression: ${InfraDefinition_HELM}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: artifactType
+      value: DOCKER
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
 rollbackPhases:
 - type: HELM
   computeProviderName: Test Azure Cloud Provider
@@ -73,4 +81,31 @@ rollbackPhases:
   provisionNodes: false
   serviceName: helm-3
   statefulSet: false
-templatized: false
+  templateExpressions:
+  - expression: ${InfraDefinition_HELM}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: artifactType
+      value: DOCKER
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
+templateExpressions:
+- expression: ${Environment}
+  fieldName: envId
+  metadata:
+  - name: artifactType
+    value: DOCKER
+  - name: relatedField
+  - name: entityType
+    value: ENVIRONMENT
+templatized: true
+userVariables:
+- type: ENTITY
+  description: Variable for Environment entity
+  fixed: false
+  mandatory: true
+  name: Environment
+- type: ENTITY
+  fixed: false
+  mandatory: true
+  name: InfraDefinition_HELM
