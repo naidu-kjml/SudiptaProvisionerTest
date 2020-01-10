@@ -7,6 +7,3 @@ variable "gcp_project" {}
 resource "null_resource" "tf_instance" {
 }
 
-output "ak" {
-   value = var.access_key
-}
