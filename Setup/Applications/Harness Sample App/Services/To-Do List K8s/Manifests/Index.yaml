@@ -1,3 +1,8 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
-storeType: Local
+gitFileConfig:
+  branch: da
+  connectorName: tf_my
+  filePath: sa
+  useBranch: true
+storeType: HelmSourceRepo
