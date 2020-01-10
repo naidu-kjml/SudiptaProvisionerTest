@@ -1,8 +1,0 @@
-harnessApiVersion: '1.0'
-type: APPLICATION_MANIFEST
-gitFileConfig:
-  branch: master
-  connectorName: tf_my
-  filePath: helm/helm2-basic
-  useBranch: true
-storeType: HelmSourceRepo
