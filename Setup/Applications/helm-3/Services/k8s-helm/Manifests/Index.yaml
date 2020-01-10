@@ -3,6 +3,6 @@ type: APPLICATION_MANIFEST
 gitFileConfig:
   branch: master
   connectorName: tf_my
-  filePath: helm/test-chart-helm3
+  filePath: helm3/test-chart-helm3
   useBranch: true
 storeType: HelmSourceRepo
