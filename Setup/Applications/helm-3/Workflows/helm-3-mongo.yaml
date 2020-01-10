@@ -16,4 +16,17 @@ notificationRules:
   userGroupAsExpression: false
   userGroupIds:
   - QpFsw0bIR_iWT4MKWygzog
-templatized: false
+templateExpressions:
+- expression: ${Environment}
+  fieldName: envId
+  metadata:
+  - name: relatedField
+  - name: entityType
+    value: ENVIRONMENT
+templatized: true
+userVariables:
+- type: ENTITY
+  description: Variable for Environment entity
+  fixed: false
+  mandatory: true
+  name: Environment
