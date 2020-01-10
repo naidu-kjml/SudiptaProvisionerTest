@@ -6,7 +6,7 @@ infrastructure:
 - type: AZURE_KUBERNETES
   cloudProviderName: Test Azure Cloud Provider
   clusterName: myHarnessCluster
-  namespace: default
+  namespace: test
   releaseName: release-${infra.kubernetes.infraId}
   resourceGroup: puneet-aks
   subscriptionId: 12d2db62-5aa9-471d-84bb-faa489b3e319
