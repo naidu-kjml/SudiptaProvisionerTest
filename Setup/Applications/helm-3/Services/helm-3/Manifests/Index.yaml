@@ -1,7 +1,7 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
 helmChartConfig:
-  chartName: mongodb
+  chartName: wordpress
   chartVersion: 7.6.3
   connectorName: Helm Chart Repo
 storeType: HelmChartRepo
