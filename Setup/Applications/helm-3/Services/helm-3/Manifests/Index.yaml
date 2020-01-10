@@ -1,6 +1,7 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
 helmChartConfig:
-  chartName: mariadb
+  chartName: mongodb
+  chartVersion: 7.6.3
   connectorName: Helm Chart Repo
 storeType: HelmChartRepo
