@@ -42,6 +42,7 @@ phases:
         templateUuid: null
         templateVariables: null
         templateVersion: null
+        useBranch: true
     stepsInParallel: false
   - type: VERIFY_SERVICE
     name: Verify Service
