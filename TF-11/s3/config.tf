@@ -17,3 +17,4 @@ provider "aws" {
 resource "aws_s3_bucket" "bucket" {
   bucket = "vbb1-test-bucket"
 }
+output "v" {value="z"}
