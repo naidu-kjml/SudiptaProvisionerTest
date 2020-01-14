@@ -1,6 +1,7 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
 helmChartConfig:
-  chartName: aks-helloworld
-  connectorName: azure-helm
+  basePath: helm/charts
+  chartName: chartmuseum
+  connectorName: HELM S3
 storeType: HelmChartRepo
