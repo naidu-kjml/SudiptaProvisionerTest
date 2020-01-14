@@ -1,0 +1,8 @@
+harnessApiVersion: '1.0'
+type: APPLICATION_MANIFEST
+gitFileConfig:
+  branch: master
+  connectorName: tf_my
+  filePath: helm3/test-chart-helm3
+  useBranch: true
+storeType: HelmSourceRepo
