@@ -1,3 +1,6 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
-storeType: Local
+helmChartConfig:
+  chartName: wordpress
+  connectorName: Helm Chart Repo
+storeType: HelmChartRepo
