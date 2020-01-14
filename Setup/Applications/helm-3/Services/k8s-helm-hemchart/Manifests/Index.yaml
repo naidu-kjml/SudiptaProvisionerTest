@@ -1,7 +1,7 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
 helmChartConfig:
-  basePath: .
-  chartName: test-chart-helm3
+  basePath: helm/charts
+  chartName: chartmuseum
   connectorName: HELM S3
 storeType: HelmChartRepo
