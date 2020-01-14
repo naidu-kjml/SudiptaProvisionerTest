@@ -2,6 +2,6 @@ harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
 helmChartConfig:
   basePath: helm/charts
-  chartName: chartmuseum
+  chartName: todolist
   connectorName: HELM S3
 storeType: HelmChartRepo
