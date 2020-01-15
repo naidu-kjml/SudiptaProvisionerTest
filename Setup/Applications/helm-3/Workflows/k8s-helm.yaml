@@ -45,10 +45,6 @@ phases:
       name: Delete_4
       properties:
         resources: service/release-5d0cc521-ba44-3a4e-bb92-ddd28f036058-wordpress
-    - type: K8S_DELETE
-      name: Delete_5
-      properties:
-        resources: pod/release-5d0cc521-ba44-3a4e-bb92-ddd28f036058-mariadb-test-aabj1
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
