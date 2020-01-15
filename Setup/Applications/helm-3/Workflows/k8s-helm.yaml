@@ -25,14 +25,6 @@ phases:
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
-    steps:
-    - type: K8S_DELETE
-      name: Delete
-      properties:
-        resources: secret/release-5d0cc521-ba44-3a4e-bb92-ddd28f036058-wordpress-3
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
