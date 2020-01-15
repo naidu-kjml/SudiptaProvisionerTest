@@ -39,12 +39,6 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
-    steps:
-    - type: K8S_DELETE
-      name: Canary Delete
-      properties:
-        instanceUnitType: COUNT
-        resources: ${k8s.canaryWorkload}
     stepsInParallel: false
   provisionNodes: false
   serviceName: k8s-helm
