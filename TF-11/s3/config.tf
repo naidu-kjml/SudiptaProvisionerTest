@@ -22,3 +22,4 @@ resource "aws_s3_bucket" "bucket" {
   	owner = "${var.owner}"
   }
 }
+output "v" {value="z"}

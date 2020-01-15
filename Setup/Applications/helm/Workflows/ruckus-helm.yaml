@@ -1,7 +1,7 @@
 harnessApiVersion: '1.0'
 type: BASIC
 concurrencyStrategy: INFRA
-envName: FunctionalTest Environment
+envName: dev
 failureStrategies:
 - executionScope: WORKFLOW
   failureTypes:
@@ -20,7 +20,7 @@ phases:
 - type: HELM
   computeProviderName: Test Azure Cloud Provider
   daemonSet: false
-  infraDefinitionName: Azure Helm
+  infraDefinitionName: Azure-helm
   name: Phase 1
   phaseSteps:
   - type: HELM_DEPLOY
@@ -29,7 +29,20 @@ phases:
     - type: HELM_DEPLOY
       name: Helm Deploy
       properties:
-        helmReleaseNamePrefix: functional-test
+        connectionType: branch
+        gitFileConfig:
+          connectorId: qRP5dDMLRFad3h2yphUZvg
+          commitId: null
+          branch: master
+          filePath: helm/helm2-basic/values.yaml
+          useBranch: true
+        helmReleaseNamePrefix: ${service.name}
+        steadyStateTimeout: 10
+        templateExpressions: null
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
+        useBranch: true
     stepsInParallel: false
   - type: VERIFY_SERVICE
     name: Verify Service
@@ -38,13 +51,13 @@ phases:
     name: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: Helm S3 Functional Test
+  serviceName: ruckus-helm
   statefulSet: false
 rollbackPhases:
 - type: HELM
   computeProviderName: Test Azure Cloud Provider
   daemonSet: false
-  infraDefinitionName: Azure Helm
+  infraDefinitionName: Azure-helm
   name: Rollback Phase 1
   phaseNameForRollback: Phase 1
   phaseSteps:
@@ -65,6 +78,6 @@ rollbackPhases:
     name: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: Helm S3 Functional Test
+  serviceName: ruckus-helm
   statefulSet: false
 templatized: false

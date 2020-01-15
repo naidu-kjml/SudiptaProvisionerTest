@@ -26,21 +26,45 @@ phases:
   - type: K8S_PHASE_STEP
     name: Deploy
     steps:
-    - type: K8S_APPLY
-      name: Apply
+    - type: K8S_CANARY_DEPLOY
+      name: Canary Deployment
       properties:
-        filePaths: templates/deployment.yaml
-        stateTimeoutInMinutes: '10'
+        instanceUnitType: COUNT
+        instances: '1'
+        stateTimeoutInMinutes: 10
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
+    steps:
+    - type: K8S_DELETE
+      name: Delete
+      properties:
+        resources: ${k8s.canaryWorkload}
     stepsInParallel: false
   provisionNodes: false
   serviceName: k8s-helm
   statefulSet: false
+  templateExpressions:
+  - expression: ${Service}
+    fieldName: serviceId
+    metadata:
+    - name: artifactType
+      value: DOCKER
+    - name: relatedField
+      value: ${InfraDefinition_Kubernetes}
+    - name: entityType
+      value: SERVICE
+  - expression: ${InfraDefinition_Kubernetes}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: artifactType
+      value: DOCKER
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
 rollbackPhases:
 - type: KUBERNETES
   computeProviderName: Test Azure Cloud Provider
@@ -61,4 +85,32 @@ rollbackPhases:
   provisionNodes: false
   serviceName: k8s-helm
   statefulSet: false
-templatized: false
+  templateExpressions:
+  - expression: ${Service}
+    fieldName: serviceId
+    metadata:
+    - name: artifactType
+      value: DOCKER
+    - name: relatedField
+      value: ${InfraDefinition_Kubernetes}
+    - name: entityType
+      value: SERVICE
+  - expression: ${InfraDefinition_Kubernetes}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: artifactType
+      value: DOCKER
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
+templatized: true
+userVariables:
+- type: ENTITY
+  description: Variable for Service entity in Rollback Canary
+  fixed: false
+  mandatory: true
+  name: Service
+- type: ENTITY
+  fixed: false
+  mandatory: true
+  name: InfraDefinition_Kubernetes

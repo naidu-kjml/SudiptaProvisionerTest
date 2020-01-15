@@ -1,0 +1,17 @@
+# Enter your Helm value YAML
+#
+# Placeholders:
+#
+# Optional: ${NAMESPACE}
+#   - Replaced with the namespace
+#     Harness will set the namespace from infrastructure
+#     mapping namespace
+#
+# Optional: ${DOCKER_IMAGE_NAME}
+#   - Replaced with the Docker image name
+#
+# Optional: ${DOCKER_IMAGE_TAG}
+#   - Replaced with the Docker image tag
+#
+# ---
+namespace : ${NAMESPACE}

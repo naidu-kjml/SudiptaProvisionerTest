@@ -1,0 +1,5 @@
+harnessApiVersion: '1.0'
+type: APPLICATION_MANIFEST
+helmChartConfig:
+  chartName: stable/mysql
+storeType: HelmChartRepo

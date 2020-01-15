@@ -1,7 +1,7 @@
 harnessApiVersion: '1.0'
-type: CANARY
+type: ROLLING
 concurrencyStrategy: INFRA
-envName: dev
+envName: azure
 failureStrategies:
 - executionScope: WORKFLOW
   failureTypes:
@@ -20,17 +20,14 @@ phases:
 - type: KUBERNETES
   computeProviderName: Test Azure Cloud Provider
   daemonSet: false
-  infraDefinitionName: azure-k8s
-  name: Canary
+  infraDefinitionName: k8s
+  name: Rolling
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
     steps:
-    - type: K8S_CANARY_DEPLOY
-      name: Canary Deployment
-      properties:
-        instanceUnitType: COUNT
-        instances: '1'
+    - type: K8S_DEPLOYMENT_ROLLING
+      name: Rollout Deployment
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
@@ -39,26 +36,29 @@ phases:
     name: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: k8s-helm
+  serviceName: k8s-helm-hemchart
   statefulSet: false
 rollbackPhases:
 - type: KUBERNETES
   computeProviderName: Test Azure Cloud Provider
   daemonSet: false
-  infraDefinitionName: azure-k8s
-  name: Rollback Canary
-  phaseNameForRollback: Canary
+  infraDefinitionName: k8s
+  name: Rollback Rolling
+  phaseNameForRollback: Rolling
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
     phaseStepNameForRollback: Deploy
     statusForRollback: SUCCESS
+    steps:
+    - type: K8S_DEPLOYMENT_ROLLING_ROLLBACK
+      name: Rollback Deployment
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
     phaseStepNameForRollback: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: k8s-helm
+  serviceName: k8s-helm-hemchart
   statefulSet: false
 templatized: false

@@ -25,24 +25,12 @@ phases:
   phaseSteps:
   - type: INFRASTRUCTURE_NODE
     name: Prepare Infra
-    steps:
-    - type: AWS_NODE_SELECT
-      name: Select Nodes
-      properties:
-        excludeSelectedHostsFromFuturePhases: true
-        instanceCount: 1
-        specificHosts: false
     stepsInParallel: false
   - type: DISABLE_SERVICE
     name: Disable Service
     stepsInParallel: false
   - type: DEPLOY_SERVICE
     name: Deploy Service
-    steps:
-    - type: COMMAND
-      name: Install
-      properties:
-        commandName: Install
     stepsInParallel: false
   - type: ENABLE_SERVICE
     name: Enable Service
