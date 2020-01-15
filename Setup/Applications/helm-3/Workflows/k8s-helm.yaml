@@ -26,15 +26,15 @@ phases:
   - type: K8S_PHASE_STEP
     name: Deploy
     steps:
+    - type: K8S_DELETE
+      name: Delete
+      properties:
+        resources: '*'
     - type: K8S_CANARY_DEPLOY
       name: Canary Deployment
       properties:
         instanceUnitType: COUNT
         instances: '1'
-    - type: K8S_DELETE
-      name: Delete
-      properties:
-        resources: '*'
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
