@@ -31,6 +31,10 @@ phases:
       properties:
         instanceUnitType: COUNT
         instances: '1'
+    - type: K8S_DELETE
+      name: Delete
+      properties:
+        resources: '*'
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
