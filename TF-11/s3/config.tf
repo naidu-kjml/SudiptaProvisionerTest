@@ -1,5 +1,7 @@
 variable "access_key" {}
 variable "secret_key" {}
+variable "bucket" {}
+variable "owner" {}
 
 provider "aws" {
   region  = "us-east-1"
@@ -15,5 +17,8 @@ provider "aws" {
 # }
 
 resource "aws_s3_bucket" "bucket" {
-  bucket = "vbb1-test-bucket"
+  bucket = "${var.bucket}"
+  tags = {
+  	owner = "${var.owner}"
+  }
 }
