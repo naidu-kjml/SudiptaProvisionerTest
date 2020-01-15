@@ -33,11 +33,6 @@ phases:
         templateUuid: null
         templateVariables: null
         templateVersion: null
-    - type: K8S_CANARY_DEPLOY
-      name: Canary Deployment
-      properties:
-        instanceUnitType: COUNT
-        instances: '1'
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
