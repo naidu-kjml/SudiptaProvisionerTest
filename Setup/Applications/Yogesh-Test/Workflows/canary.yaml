@@ -16,6 +16,46 @@ notificationRules:
   userGroupAsExpression: false
   userGroupIds:
   - OGP2bnvASa-D8oua0YdmhQ
+phases:
+- type: SSH
+  computeProviderName: aws_playground
+  daemonSet: false
+  infraDefinitionName: rei-rolling
+  name: Phase 1
+  phaseSteps:
+  - type: INFRASTRUCTURE_NODE
+    name: Prepare Infra
+    steps:
+    - type: AWS_NODE_SELECT
+      name: Select Nodes
+      properties:
+        excludeSelectedHostsFromFuturePhases: true
+        instanceCount: 1
+        specificHosts: false
+    stepsInParallel: false
+  - type: DISABLE_SERVICE
+    name: Disable Service
+    stepsInParallel: false
+  - type: DEPLOY_SERVICE
+    name: Deploy Service
+    steps:
+    - type: COMMAND
+      name: Install
+      properties:
+        commandName: Install
+    stepsInParallel: false
+  - type: ENABLE_SERVICE
+    name: Enable Service
+    stepsInParallel: false
+  - type: VERIFY_SERVICE
+    name: Verify Service
+    stepsInParallel: false
+  - type: WRAP_UP
+    name: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  serviceName: ssh
+  statefulSet: false
 preDeploymentSteps:
 - type: SHELL_SCRIPT
   name: Shell Script
@@ -34,4 +74,55 @@ preDeploymentSteps:
     tags: ''
     templateVariables: ''
     timeoutMillis: 60000
+- type: ARTIFACT_CHECK
+  name: Artifact Check
+rollbackPhases:
+- type: SSH
+  computeProviderName: aws_playground
+  daemonSet: false
+  infraDefinitionName: rei-rolling
+  name: Rollback Phase 1
+  phaseNameForRollback: Phase 1
+  phaseSteps:
+  - type: DISABLE_SERVICE
+    name: Disable Service
+    phaseStepNameForRollback: Enable Service
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: STOP_SERVICE
+    name: Stop Service
+    phaseStepNameForRollback: Deploy Service
+    statusForRollback: SUCCESS
+    steps:
+    - type: COMMAND
+      name: Stop
+      properties:
+        commandName: Stop
+    stepsInParallel: false
+  - type: DEPLOY_SERVICE
+    name: Deploy Service
+    phaseStepNameForRollback: Deploy Service
+    statusForRollback: SUCCESS
+    steps:
+    - type: COMMAND
+      name: Install
+      properties:
+        commandName: Install
+    stepsInParallel: false
+  - type: ENABLE_SERVICE
+    name: Enable Service
+    phaseStepNameForRollback: Disable Service
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: VERIFY_SERVICE
+    name: Verify Service
+    phaseStepNameForRollback: Deploy Service
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: WRAP_UP
+    name: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  serviceName: ssh
+  statefulSet: false
 templatized: false
