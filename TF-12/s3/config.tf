@@ -4,6 +4,9 @@ variable "access_key" {
 variable "secret_key" {
 }
 
+variable "buk" {
+}
+
 variable "owner" {}
 
 provider "aws" {
@@ -20,11 +23,10 @@ provider "aws" {
 # }
 
 resource "aws_s3_bucket" "b" {
-  bucket        = "yogesh-tf-test-bucket"
+  bucket        = var.buk
   force_destroy = "true"
 
   tags = {
-    Name = "yogesh_test"
     Owner = var.owner
   }
 }
