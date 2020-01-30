@@ -8,6 +8,7 @@ pipelineStages:
   properties:
     userGroups:
     - 4VCrVMVxQ52wR7fxQv0RPA
+    workflowVariables: null
     variables: null
     pipelineStageElementId: bz2bBtGXR8-YKqW1bCv1yw
     stageName: STAGE 2
@@ -31,7 +32,7 @@ pipelineStages:
   name: OS on kube cluster-should fail
   parallel: false
   skipCondition:
-    type: DO_NOT_SKIP
+    type: ALWAYS_SKIP
   stageName: STAGE 1
   workflowName: wf_BG_serOS1
 - type: APPROVAL
