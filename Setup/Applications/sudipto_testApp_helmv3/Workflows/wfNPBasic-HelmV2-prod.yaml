@@ -25,17 +25,6 @@ phases:
   phaseSteps:
   - type: HELM_DEPLOY
     name: Deploy Containers
-    steps:
-    - type: HELM_DEPLOY
-      name: Helm Deploy
-      properties:
-        gitFileConfig: null
-        helmReleaseNamePrefix: HelmV2
-        steadyStateTimeout: 10
-        templateExpressions: null
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
     stepsInParallel: false
   - type: VERIFY_SERVICE
     name: Verify Service
