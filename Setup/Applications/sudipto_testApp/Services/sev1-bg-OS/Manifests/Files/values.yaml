@@ -1,8 +1,8 @@
-name: harness-example
+name: bg-dc
 replicas: 1
 
-image: ${artifact.metadata.image}
-dockercfg: ${artifact.source.dockerconfig}
+#image: ${artifact.metadata.image}
+#dockercfg: ${artifact.source.dockerconfig}
 
 createNamespace: true
 namespace: ${infra.kubernetes.namespace}
