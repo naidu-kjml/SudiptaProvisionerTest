@@ -3,7 +3,8 @@ kind: ConfigMap
 metadata:
   name: {{.Values.name}}
 data:
-  sudipto: test
+  hello: world
+---
 
 kind: "DeploymentConfig"
 apiVersion: apps.openshift.io/v1
@@ -23,36 +24,10 @@ spec:
         envFrom:
         - configMapRef:
             name: {{.Values.name}}
-replicas: 5 
+  replicas: 1
   selector:
     name: {{.Values.name}}
   triggers:
     - type: "ConfigChange" 
-    - type: "ImageChange" 
-      imageChangeParams:
-        automatic: true
-        containerNames:
-          - "helloworld"
-        from:
-          kind: "ImageStreamTag"
-          name: "origin-ruby-sample:latest"
   strategy: 
     type: "Rolling"
-        rollingParams:
-      pre:
-        failurePolicy: Abort
-        execNewPod:
-          containerName: helloworld 
-          command: [ "/usr/bin/command", "arg1", "arg2" ] 
-        env:
-          config:
-              key1: value1
-            secrets:
-              key2: value2
-          volumes:
-            - data 
-    type: "Recreate"
-resources:
-  limits:
-    cpu: "100m" 
-    memory: "256Mi" 
