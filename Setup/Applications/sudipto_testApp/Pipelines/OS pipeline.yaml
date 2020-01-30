@@ -11,7 +11,7 @@ pipelineStages:
     workflowVariables: null
     variables: null
     pipelineStageElementId: bz2bBtGXR8-YKqW1bCv1yw
-    stageName: STAGE 2
+    stageName: STAGE 3
     disable: false
     timeoutMillis: 60000
     disableAssertion: null
@@ -20,10 +20,10 @@ pipelineStages:
     pipelineId: SF3BhSOAQ3OK4Nf9PMBzFA
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: STAGE 2
+  stageName: STAGE 3
 - type: ENV_STATE
   name: OS on OS4 cluster- should pass
-  parallel: false
+  parallel: true
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 3
@@ -41,12 +41,13 @@ pipelineStages:
   properties:
     userGroups:
     - 4VCrVMVxQ52wR7fxQv0RPA
+    workflowVariables: null
     pipelineStageElementId: fRnssYIESOqtufqLAv66KA
     stageName: STAGE 4
     disable: false
     timeoutMillis: 48.24
     disableAssertion: null
-    pipelineStageParallelIndex: 4
+    pipelineStageParallelIndex: 3
     approvalStateType: USER_GROUP
     pipelineId: SF3BhSOAQ3OK4Nf9PMBzFA
   skipCondition:
