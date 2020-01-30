@@ -1,3 +1,11 @@
 harnessApiVersion: '1.0'
 type: PIPELINE
 description: test kube and OS
+pipelineStages:
+- type: ENV_STATE
+  name: OS on kube cluster-should fail
+  parallel: false
+  skipCondition:
+    type: ALWAYS_SKIP
+  stageName: STAGE 1
+  workflowName: wf_BG_serOS1
