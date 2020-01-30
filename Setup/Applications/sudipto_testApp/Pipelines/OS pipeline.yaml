@@ -17,7 +17,7 @@ pipelineStages:
       shellScriptApprovalParams:
         scriptString: exit 0
         retryInterval: 30000
-    pipelineStageElementId: XehJVXxFSx2ZU4Sdo6l61A
+    pipelineStageElementId: 8TihuvgGRe6jRu_hMiIJPA
     stageName: STAGE 2
     disable: false
     timeoutMillis: 3600000
@@ -28,3 +28,10 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 2
+- type: ENV_STATE
+  name: OS on OS4 cluster- should pass
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 3
+  workflowName: wfOS_BG_serOS_2
