@@ -9,3 +9,22 @@ pipelineStages:
     type: ALWAYS_SKIP
   stageName: STAGE 1
   workflowName: wf_BG_serOS1
+- type: APPROVAL
+  name: Approval 1
+  parallel: false
+  properties:
+    approvalStateParams:
+      shellScriptApprovalParams:
+        scriptString: exit 0
+        retryInterval: 30000
+    pipelineStageElementId: XehJVXxFSx2ZU4Sdo6l61A
+    stageName: STAGE 2
+    disable: false
+    timeoutMillis: 3600000
+    disableAssertion: null
+    pipelineStageParallelIndex: 2
+    approvalStateType: SHELL_SCRIPT
+    pipelineId: SF3BhSOAQ3OK4Nf9PMBzFA
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
