@@ -6,18 +6,16 @@ pipelineStages:
   name: Approval 0
   parallel: false
   properties:
-    workflowVariables: null
-    approvalStateParams:
-      shellScriptApprovalParams:
-        scriptString: exit 0
-        retryInterval: 30000
-    pipelineStageElementId: cs6visX0QXmXOXm9XIq6PA
+    userGroups:
+    - 4VCrVMVxQ52wR7fxQv0RPA
+    variables: null
+    pipelineStageElementId: bz2bBtGXR8-YKqW1bCv1yw
     stageName: STAGE 2
     disable: false
     timeoutMillis: 60000
     disableAssertion: null
     pipelineStageParallelIndex: 1
-    approvalStateType: SHELL_SCRIPT
+    approvalStateType: USER_GROUP
     pipelineId: SF3BhSOAQ3OK4Nf9PMBzFA
   skipCondition:
     type: DO_NOT_SKIP
