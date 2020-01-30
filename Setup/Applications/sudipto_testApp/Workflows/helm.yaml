@@ -31,6 +31,15 @@ phases:
     stepsInParallel: false
   - type: VERIFY_SERVICE
     name: Verify Service
+    steps:
+    - type: EMAIL
+      name: Email
+      properties:
+        body: test
+        ccAddress: ab@ab
+        ignoreDeliveryFailure: true
+        subject: sdd
+        toAddress: abc
     stepsInParallel: false
   - type: WRAP_UP
     name: Wrap Up
