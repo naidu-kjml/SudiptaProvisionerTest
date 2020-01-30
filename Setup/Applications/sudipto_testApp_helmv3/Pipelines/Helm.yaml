@@ -6,7 +6,7 @@ pipelineStages:
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: Approval1
+  stageName: Stage 1
   workflowName: wfNPBasic-HelmV2
 - type: APPROVAL
   name: Approval 1
@@ -14,8 +14,8 @@ pipelineStages:
   properties:
     userGroups:
     - 0BqHuFRRRU2P_S1y1tIzYA
-    pipelineStageElementId: JfEK6o49TGCSDwmxEuWL3w
-    stageName: Approval1
+    pipelineStageElementId: 12uiVcfpQDqXgjTEECOjXA
+    stageName: Stage 1
     disable: false
     timeoutMillis: 3600000
     disableAssertion: null
@@ -24,4 +24,4 @@ pipelineStages:
     pipelineId: iQPiOhBeTF-s3idFDQiYeQ
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: Approval1
+  stageName: Stage 1
