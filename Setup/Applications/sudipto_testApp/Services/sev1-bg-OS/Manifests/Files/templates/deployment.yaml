@@ -1,65 +1,58 @@
-{{- if .Values.env.config}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{.Values.name}}
 data:
-{{.Values.env.config | toYaml | indent 2}}
----
-{{- end}}
+  sudipto: test
 
-{{- if .Values.env.secrets}}
-apiVersion: v1
-kind: Secret
+kind: "DeploymentConfig"
+apiVersion: apps.openshift.io/v1
 metadata:
   name: {{.Values.name}}
-stringData:
-{{.Values.env.secrets | toYaml | indent 2}}
----
-{{- end}}
-
-{{- if .Values.dockercfg}}
-apiVersion: v1
-kind: Secret
-metadata:
-  name: {{.Values.name}}-dockercfg
-  annotations:
-    harness.io/skip-versioning: true
-data:
-  .dockercfg: {{.Values.dockercfg}}
-type: kubernetes.io/dockercfg
----
-{{- end}}
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: {{.Values.name}}-deployment
 spec:
-  replicas: {{int .Values.replicas}}
-  selector:
-    matchLabels:
-      app: {{.Values.name}}
-  template:
+  template: 
     metadata:
       labels:
-        app: {{.Values.name}}
+        name: {{.Values.name}}
     spec:
-      {{- if .Values.dockercfg}}
-      imagePullSecrets:
-      - name: {{.Values.name}}-dockercfg
-      {{- end}}
       containers:
-      - name: {{.Values.name}}
-        image: {{.Values.image}}
-        {{- if or .Values.env.config .Values.env.secrets}}
+      - name: nginx
+        image: twalter/openshift-nginx:latest
+        ports:
+        - containerPort: 80
         envFrom:
-        {{- if .Values.env.config}}
         - configMapRef:
             name: {{.Values.name}}
-        {{- end}}
-        {{- if .Values.env.secrets}}
-        - secretRef:
-            name: {{.Values.name}}
-        {{- end}}
-        {{- end}}
+replicas: 5 
+  selector:
+    name: {{.Values.name}}
+  triggers:
+    - type: "ConfigChange" 
+    - type: "ImageChange" 
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - "helloworld"
+        from:
+          kind: "ImageStreamTag"
+          name: "origin-ruby-sample:latest"
+  strategy: 
+    type: "Rolling"
+        rollingParams:
+      pre:
+        failurePolicy: Abort
+        execNewPod:
+          containerName: helloworld 
+          command: [ "/usr/bin/command", "arg1", "arg2" ] 
+        env:
+          config:
+              key1: value1
+            secrets:
+              key2: value2
+          volumes:
+            - data 
+    type: "Recreate"
+resources:
+  limits:
+    cpu: "100m" 
+    memory: "256Mi" 
