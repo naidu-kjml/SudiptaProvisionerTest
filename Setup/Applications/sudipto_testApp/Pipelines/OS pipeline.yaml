@@ -6,7 +6,7 @@ pipelineStages:
   name: OS on kube cluster-should fail
   parallel: false
   skipCondition:
-    type: ALWAYS_SKIP
+    type: DO_NOT_SKIP
   stageName: STAGE 1
   workflowName: wf_BG_serOS1
 - type: APPROVAL
@@ -17,7 +17,7 @@ pipelineStages:
       shellScriptApprovalParams:
         scriptString: exit 0
         retryInterval: 30000
-    pipelineStageElementId: XdsEWIgER_eO0m1DnnT0qg
+    pipelineStageElementId: cs6visX0QXmXOXm9XIq6PA
     stageName: STAGE 2
     disable: false
     timeoutMillis: 60000
