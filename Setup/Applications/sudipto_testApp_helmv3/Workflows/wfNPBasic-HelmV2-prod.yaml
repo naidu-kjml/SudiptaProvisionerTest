@@ -1,7 +1,7 @@
 harnessApiVersion: '1.0'
 type: BASIC
 concurrencyStrategy: INFRA
-envName: NP
+envName: prod
 failureStrategies:
 - executionScope: WORKFLOW
   failureTypes:
@@ -18,9 +18,9 @@ notificationRules:
   - 0BqHuFRRRU2P_S1y1tIzYA
 phases:
 - type: HELM
-  computeProviderName: playground-gke-gcs-gcr
+  computeProviderName: kubernetes_cluster_harnessTest
   daemonSet: false
-  infraDefinitionName: GCP-Helm-NP
+  infraDefinitionName: helm
   name: Phase 1
   phaseSteps:
   - type: HELM_DEPLOY
@@ -48,9 +48,9 @@ phases:
   statefulSet: false
 rollbackPhases:
 - type: HELM
-  computeProviderName: playground-gke-gcs-gcr
+  computeProviderName: kubernetes_cluster_harnessTest
   daemonSet: false
-  infraDefinitionName: GCP-Helm-NP
+  infraDefinitionName: helm
   name: Rollback Phase 1
   phaseNameForRollback: Phase 1
   phaseSteps:
