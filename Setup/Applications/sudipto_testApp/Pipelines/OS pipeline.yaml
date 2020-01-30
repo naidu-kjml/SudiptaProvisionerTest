@@ -17,7 +17,7 @@ pipelineStages:
       shellScriptApprovalParams:
         scriptString: exit 0
         retryInterval: 30000
-    pipelineStageElementId: 8TihuvgGRe6jRu_hMiIJPA
+    pipelineStageElementId: gaHqDmitTOaSMhZ_Nd-YFw
     stageName: STAGE 2
     disable: false
     timeoutMillis: 3600000
@@ -35,3 +35,20 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 3
   workflowName: wfOS_BG_serOS_2
+- type: APPROVAL
+  name: Approval 3
+  parallel: false
+  properties:
+    userGroups:
+    - HVSrpFBFReu8em2a5onu_Q
+    pipelineStageElementId: O2M0db2_QAiNDYmTJWaB3w
+    stageName: STAGE 4
+    disable: false
+    timeoutMillis: 604800000
+    disableAssertion: null
+    pipelineStageParallelIndex: 4
+    approvalStateType: USER_GROUP
+    pipelineId: SF3BhSOAQ3OK4Nf9PMBzFA
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 4
