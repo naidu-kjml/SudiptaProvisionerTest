@@ -41,11 +41,10 @@ pipelineStages:
   properties:
     userGroups:
     - HVSrpFBFReu8em2a5onu_Q
-    workflowVariables: null
-    pipelineStageElementId: O2M0db2_QAiNDYmTJWaB3w
+    pipelineStageElementId: n88a0xG9SG-Uxk7RkXiL9A
     stageName: STAGE 4
     disable: false
-    timeoutMillis: 604800000
+    timeoutMillis: 48.24
     disableAssertion: null
     pipelineStageParallelIndex: 4
     approvalStateType: USER_GROUP
