@@ -7,7 +7,6 @@ data:
 ---
 
 kind: "DeploymentConfig"
-kind: "DeploymentConfigs"
 apiVersion: apps.openshift.io/v1
 metadata:
   name: {{.Values.name}}
