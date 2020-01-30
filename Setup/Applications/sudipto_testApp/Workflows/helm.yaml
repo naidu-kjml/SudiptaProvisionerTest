@@ -28,6 +28,20 @@ phases:
     steps:
     - type: HELM_DEPLOY
       name: Helm Deploy
+      properties:
+        connectionType: branch
+        gitFileConfig:
+          connectorId: kklg6FMvT56-4Dgly9qN8g
+          commitId: null
+          branch: master
+          filePath: ./TF-12/
+          useBranch: true
+        helmReleaseNamePrefix: 'release: {{ .Release.Name }}'
+        steadyStateTimeout: 10
+        templateExpressions: null
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
     stepsInParallel: false
   - type: VERIFY_SERVICE
     name: Verify Service
