@@ -1,6 +1,3 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
-helmChartConfig:
-  chartName: test-chart-helm3
-  connectorName: helm3-jfrog
-storeType: HelmChartRepo
+storeType: Local
