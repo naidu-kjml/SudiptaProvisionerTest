@@ -14,7 +14,7 @@ pipelineStages:
   properties:
     userGroups:
     - 0BqHuFRRRU2P_S1y1tIzYA
-    pipelineStageElementId: 2g-xelU_RsiTjJv6oJStTw
+    pipelineStageElementId: GtKXtwuZTrC4uCtPzX30bQ
     stageName: Stage 1
     disable: false
     timeoutMillis: 3600000
@@ -26,7 +26,7 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: Stage 1
 - type: ENV_STATE
-  name: stage 2
+  name: Stage 2
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
