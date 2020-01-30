@@ -14,7 +14,7 @@ pipelineStages:
   properties:
     userGroups:
     - 0BqHuFRRRU2P_S1y1tIzYA
-    pipelineStageElementId: UOMqLY_GTvSwMWAWrFpvrw
+    pipelineStageElementId: apE1MmoURdSid_35ZMXsWQ
     stageName: Stage 1
     disable: false
     timeoutMillis: 3600000
@@ -39,3 +39,10 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 3
   workflowName: wfCan-Helm3
+- type: ENV_STATE
+  name: Helmv3-Prod
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 4
+  workflowName: wfBasic-Prod-helm3
