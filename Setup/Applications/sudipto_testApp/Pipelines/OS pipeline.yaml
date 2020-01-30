@@ -17,10 +17,10 @@ pipelineStages:
       shellScriptApprovalParams:
         scriptString: exit 0
         retryInterval: 30000
-    pipelineStageElementId: gaHqDmitTOaSMhZ_Nd-YFw
+    pipelineStageElementId: XdsEWIgER_eO0m1DnnT0qg
     stageName: STAGE 2
     disable: false
-    timeoutMillis: 3600000
+    timeoutMillis: 60000
     disableAssertion: null
     pipelineStageParallelIndex: 2
     approvalStateType: SHELL_SCRIPT
@@ -41,6 +41,7 @@ pipelineStages:
   properties:
     userGroups:
     - HVSrpFBFReu8em2a5onu_Q
+    workflowVariables: null
     pipelineStageElementId: O2M0db2_QAiNDYmTJWaB3w
     stageName: STAGE 4
     disable: false
